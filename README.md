@@ -2,10 +2,6 @@
 
 **The design skill for your CLI.**
 
-Design skills exist for every frontend. None for the terminal. glowup makes your
-CLI's output screenshot-worthy without breaking a single pipe. Clone it, run it,
-screenshot it.
-
 ![Before: every line the same weight. After: title in cyan, TOTAL bold, fine print dimmed.](assets/before-after.svg)
 
 ## 🚀 Install
@@ -37,9 +33,8 @@ Restart Claude Code. Run `/glowup` or say **"make my CLI cute."**
 Real runs with the exact code changes: [`references/example.md`](references/example.md)
 Design canon: [`references/canon.md`](references/canon.md)
 
-## ⭐ Like it?
+## Share your before and after!
 
-Star the repo to get notified when new layouts drop. And post your before/after
-pair when you get one.
+In the spirit of user research, I'd love to see your before and after screenshots to keep improving the skill. Or make a fork and contribute :) 
 
 MIT

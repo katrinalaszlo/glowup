@@ -1,0 +1,33 @@
+name: 📸 Show and tell — your before/after
+description: Ran glowup on your CLI? Post the pair.
+title: "[before/after] "
+labels: ["show-and-tell"]
+body:
+  - type: textarea
+    id: pair
+    attributes:
+      label: The pair
+      description: Drag in the before and after. First redact credentials, tokens, personal data, account IDs, private endpoints, and local paths.
+    validations:
+      required: true
+  - type: input
+    id: tool
+    attributes:
+      label: The tool
+      description: Name, plus a link if it's public.
+    validations:
+      required: false
+  - type: input
+    id: perspective
+    attributes:
+      label: Your perspective
+      description: Design engineer, designer, engineer, or something else—only if it adds useful context.
+    validations:
+      required: false
+  - type: textarea
+    id: what-changed
+    attributes:
+      label: What changed
+      description: A line or two. What did you focus on, and what did glowup catch?
+    validations:
+      required: false

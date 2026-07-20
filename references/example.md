@@ -1,8 +1,15 @@
 # Worked example: context-receipt (2026-07-17, the first glowup)
 
+## Contents
+
+- [Context-receipt: presentation-only pass](#context-receipt-presentation-only-pass)
+- [npx debloat: interactive result](#npx-debloat-interactive-result)
+
 Real before/after from the skill's first dogfood — a receipt-pattern CLI. Not mocked.
 
-## Before (plain printf, no hierarchy — everything shouts equally)
+## Context-receipt: presentation-only pass
+
+### Before (plain printf, no hierarchy — everything shouts equally)
 
 ```
  CONTEXT RECEIPT
@@ -24,7 +31,7 @@ Real before/after from the skill's first dogfood — a receipt-pattern CLI. Not 
  npx context-receipt
 ```
 
-## After (same bytes when piped; styled only for eyes)
+### After (same bytes when piped; styled only for eyes)
 
 Identical layout, plus hierarchy via whole-line styles:
 
@@ -37,10 +44,15 @@ Identical layout, plus hierarchy via whole-line styles:
 The visual read order becomes: title → total → items → fine print. In the plain
 version the read order was: everything at once.
 
-## The exact change that produced it
+Research note: the four visible rows sum to ~13.8k while the captured total is
+~24.8k. The original styling pass preserved those bytes, but a complete UX pass should
+label the remaining ~11.0k as unitemized or expose its components. Visual hierarchy must
+not make an unexplained number look more trustworthy.
 
-Presentation layer only — logic untouched, verified byte-identical on `--json`,
-piped stdout, and `--budget` exit codes.
+### The exact change that produced it
+
+Presentation layer only — logic untouched. `--json` and piped stdout remained
+byte-identical, and the over-budget path continued to return exit status 1.
 
 ```js
 // was:
@@ -61,7 +73,7 @@ lineS(bold, "TOTAL", "~" + fmt(total));
 Note the trick: because styling wraps the *already-padded* line, ANSI codes never
 touch the column math. No `visibleLength` needed anywhere in this glowup.
 
-## Verification transcript (run these, expect these)
+### Verification transcript (run these, expect these)
 
 ```
 node cli.js | cat          # plain — no escape codes in piped output
@@ -71,21 +83,20 @@ node cli.js --color        # forces styles, for screenshot capture in docs
 NO_COLOR=1 node cli.js     # plain even on a TTY
 ```
 
-# Worked example: npx debloat (2026-07-18, the celebration card)
+## npx debloat: interactive result
 
-Real run of `npx debloat`, the interactive pattern: a priced pick collapses into a
-card. Screenshot, not a mock:
+Real run of `npx debloat`, where a priced choice resolves into a compact result:
 
 ![npx debloat: comparison bars, ranked cost table, priced choices, then the earned-celebration card](../assets/debloat-pick.png)
 
 What to pattern-match from it:
 
-- **Shareable unit is the card, not the table.** The ranked table is working surface;
-  the bordered box at the end (`-830 tokens · every session · 21.4k → 20.6k · -4%`)
-  is the screenshot. The user's own number, in a frame.
-- **Celebration is earned and priced.** The ✨ appears only after the user acted, the
-  card's numbers are the same ones from the bars above, and `reversible` sits in the
-  same breath as the win. Exactly two ✨: the whole emoji budget, spent here.
+- **The result is distinct from the working table.** The ranked table supports the
+  choice; the bordered box at the end (`-830 tokens · every session · 21.4k → 20.6k ·
+  -4%`) consolidates the outcome.
+- **Feedback is earned and specific.** The warm marker appears only after the user
+  acted, the card's numbers are the same ones from the bars above, and `reversible`
+  sits in the same breath as the result.
 - **Color is semantic, and green is reserved.** White for now, red/olive for the two
   futures, dim for the table. Green appears once, on the earned result.
 - **Choices are numbered with prices.** `[1] confident -830 · [2] all incl. your-call
@@ -95,17 +106,17 @@ What to pattern-match from it:
   "never showed up in Claude's logs, but gstack runs them its own way, so I can't
   tell if you use them." The tool states the limits of its own telemetry instead of
   pretending to know.
-- **Ends in a door, not a wall.** After the card: the restore command (undo is one
-  line away) and the cyan `npx debloat` self-attribution the screenshot carries
-  with it.
+- **Ends in a door, not a wall.** After the card, the restore command keeps undo one
+  line away. The source command is retained because the tool's author intentionally
+  chose it for this output; it is not a universal requirement.
 
 And the same tool with nothing to trim:
 
 ![npx debloat all clean: NICE, ALL CLEAN — you keep a tidy context, 18.5k tokens loaded, nothing wasted](../assets/debloat-clean.png)
 
-- **The empty state is designed, not blank.** "Nothing to do" gets the same card
-  treatment as a win, because it is one: `you keep a tidy context · every skill here
-  earns its place · 18.5k tokens loaded · nothing wasted`.
+- **The empty state is designed, not blank.** "Nothing to do" explains what was checked
+  and why no action is needed: `you keep a tidy context · every skill here earns its
+  place · 18.5k tokens loaded · nothing wasted`.
 - **This is the reviewer with nothing to flag.** The praise lands because the same
   tool would have flagged bloat if it existed. Celebration from an honest system is
-  the only celebration this audience believes.
+  calibrated to an actual result.

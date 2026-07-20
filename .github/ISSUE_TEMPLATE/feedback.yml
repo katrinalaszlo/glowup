@@ -1,0 +1,17 @@
+name: 💬 Feedback
+description: Something broke, read wrong, or could be better.
+labels: ["feedback"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Screenshots welcome after redacting secrets and private data. If glowup broke a pipe or a --json path, paste the relevant diff.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: false

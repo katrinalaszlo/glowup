@@ -1,6 +1,6 @@
 # glowup
 
-**Product-design principles for command-line interfaces and agent skills.**
+**The design skill for your terminal experience.**
 
 CLI design isn't new. What's new is who can participate in it.
 

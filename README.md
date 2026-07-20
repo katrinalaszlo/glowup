@@ -1,6 +1,6 @@
 # glowup
 
-**The design skill for your terminal experience.**
+**A design skill for the terminal**
 
 CLI design isn't new. What's new is who can participate in it.
 

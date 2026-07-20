@@ -81,7 +81,7 @@ Accessibility, trust, documentation, and evaluation remain part of every stage.
 glowup should improve the way good products do: by learning from real use.
 
 Share a [before and after](https://github.com/katrinalaszlo/glowup/issues/new?template=before-after.yml)
-and tell us anything you noticed—what worked, what didn't, or what you would
+and tell anything you noticed—what worked, what didn't, or what you would
 change. If you have a pattern, principle, or example that belongs in the skill,
 fork the repository and open a pull request.
 

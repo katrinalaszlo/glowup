@@ -33,11 +33,52 @@ Open Claude Code in the project that contains your tool or skill, then run:
 You can also ask Claude to “glowup my CLI,” “improve this tool's UX,” “glow up
 this skill,” or “audit this skill's interaction design.”
 
-For a terminal tool, glowup captures the real current experience and asks what
-you want to improve: **Display**, **Flow**, or **Both**. It then shows the real
-Before and a Proposed After using the same command and data before changing the
-code. Once you approve the direction, it implements the change and verifies the
-Final After without weakening machine contracts.
+## How a run works
+
+glowup keeps one progress marker visible as the work moves through five stages:
+
+```text
+Capture → Choose → Preview → Implement & Verify → Compare & Finish
+```
+
+At each transition it states what is happening now and what comes next, without
+narrating every command.
+
+1. **Capture the Before.** glowup performs a quick orientation and runs one
+   representative path to record the real command, output, interaction, and
+   terminal dimensions. This opening pass stays read-only and does not create
+   fixtures, spawn reviewers, or diagnose every path.
+2. **Choose the focus when needed.** If your request is ambiguous, glowup
+   recommends **Display**, **Flow**, or **Both**. If you already named the focus,
+   it skips the question. On a bare `/glowup`, these are the only opening options;
+   findings support the recommendation instead of becoming another intake menu.
+3. **Review the Proposed After.** Display changes use a terminal mockup or an
+   isolated rendered snapshot. Flow changes use a short interaction transcript.
+   Both use the same command and representative data as the Before.
+4. **Approve before implementation.** Apply the direction, revise the preview,
+   or change focus. No product code changes before approval. Deeper compatibility
+   baselines run only after approval and stay scoped to the selected change.
+5. **Compare the verified result.** glowup runs the implemented tool, replaces
+   the preview with a real Final After, verifies machine contracts, and offers an
+   optional export. Its final response always includes the original Before, the
+   Final After, confirmed changes and checks, and the next-action checklist.
+
+At the end, select one or more next actions: **Export Before/After**, **Share on
+GitHub**, **Commit changes**, or **Continue Glowup**. **Finish here** is the only
+exclusive option.
+
+When you select Export, glowup creates the comparison and opens its primary file
+in your local viewer automatically. If the environment cannot open files, it
+provides one direct path instead. Export never means upload or publish.
+
+When you select Share, glowup prepares and redacts a Before/After issue, shows
+you the exact public draft, and posts it to the glowup repository only after you
+approve it. The published issue opens automatically.
+
+The default review stays in the conversation. High-fidelity snapshots,
+recordings, and HTML export pages are optional. When the target is not runnable
+locally, you can provide a screenshot or pasted output; glowup does not download
+or install it without permission.
 
 ## What a run produces
 
@@ -47,8 +88,7 @@ useful human experience:
 ![A CLI before glowup and after glowup, with the same data organized into a clearer visual hierarchy.](assets/before-after.svg)
 
 At the end, glowup can save a Markdown comparison with linked terminal captures
-or screenshots. If the tool can run locally, it captures both states directly.
-Otherwise, you can supply the starting screenshot or output.
+or screenshots, or a short recording when the interaction itself changed.
 
 For a skill, the before and after includes both the instruction change and its
 effect on a representative request in a fresh session.

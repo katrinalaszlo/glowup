@@ -65,13 +65,6 @@ or read the [terminal design principles and prior art](references/canon.md) behi
 the CLI path and the [skill-design rubric](references/skill-design.md) for
 human-agent collaboration.
 
-## Use glowup on itself
-
-Point glowup at its own `SKILL.md` and run the normal workflow. Self-review can
-surface ambiguity and missing checks, but it is not independent validation:
-compare the revised skill on the same request in a fresh session and record what
-improved, regressed, or remains uncertain.
-
 ## Roadmap
 
 glowup starts with developer interfaces that can be tested against real tasks

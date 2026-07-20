@@ -33,11 +33,11 @@ Open Claude Code in the project that contains your tool or skill, then run:
 You can also ask Claude to “glowup my CLI,” “improve this tool's UX,” “glow up
 this skill,” or “audit this skill's interaction design.”
 
-glowup inspects the real experience before changing anything. It identifies the
-readers and contracts, recommends the most useful design focus, and asks one
-consequential question before editing. It ports the reason behind a design
-principle—not its surface treatment—and defines how the improvement will be
-tested.
+For a terminal tool, glowup captures the real current experience and asks what
+you want to improve: **Display**, **Flow**, or **Both**. It then shows the real
+Before and a Proposed After using the same command and data before changing the
+code. Once you approve the direction, it implements the change and verifies the
+Final After without weakening machine contracts.
 
 ## What a run produces
 
@@ -45,6 +45,10 @@ For a CLI, the result is the same machine contracts with a clearer and more
 useful human experience:
 
 ![A CLI before glowup and after glowup, with the same data organized into a clearer visual hierarchy.](assets/before-after.svg)
+
+At the end, glowup can save a Markdown comparison with linked terminal captures
+or screenshots. If the tool can run locally, it captures both states directly.
+Otherwise, you can supply the starting screenshot or output.
 
 For a skill, the before and after includes both the instruction change and its
 effect on a representative request in a fresh session.

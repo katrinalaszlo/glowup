@@ -63,17 +63,25 @@ narrating every command.
    optional export. Its final response always includes the original Before, the
    Final After, confirmed changes and checks, and the next-action checklist.
 
-At the end, select one or more next actions: **Export Before/After**, **Share on
-GitHub**, **Commit changes**, or **Continue Glowup**. **Finish here** is the only
-exclusive option.
+At the end, select any actions you want glowup to take before finishing:
+**Export visual**, **Share on GitHub**, **Commit changes**, or **Another glowup
+pass**. The actions can be combined. If you do not need one, just say **done**.
 
-When you select Export, glowup creates the comparison and opens its primary file
-in your local viewer automatically. If the environment cannot open files, it
+When you select Export, glowup creates and immediately opens a polished visual comparison.
+It uses PNG for a single-screen comparison or compact storyboard, and PDF when
+long captures, several states, or explanatory notes need more room. A recording
+is optional when timing or motion matters, and Markdown is supporting context
+rather than the primary artifact. If the environment cannot open files, glowup
 provides one direct path instead. Export never means upload or publish.
 
-When you select Share, glowup prepares and redacts a Before/After issue, shows
-you the exact public draft, and posts it to the glowup repository only after you
-approve it. The published issue opens automatically.
+When you select Share, glowup prepares a short, redacted issue centered on the
+Before/After image. It opens the image and issue form as soon as the draft is
+ready, then shows you exactly what would become public. The image must appear
+inline; a PDF export gets an inline PNG preview plus the full PDF attached or
+linked where supported. If automatic image upload is unavailable, glowup opens
+the form and the PNG together for drag-and-drop instead of publishing a
+text-only issue. Nothing is posted until you approve it, and a published issue
+opens automatically.
 
 The default review stays in the conversation. High-fidelity snapshots,
 recordings, and HTML export pages are optional. When the target is not runnable
@@ -87,8 +95,8 @@ useful human experience:
 
 ![A CLI before glowup and after glowup, with the same data organized into a clearer visual hierarchy.](assets/before-after.svg)
 
-At the end, glowup can save a Markdown comparison with linked terminal captures
-or screenshots, or a short recording when the interaction itself changed.
+At the end, glowup can save and open a shareable Before/After PNG or PDF, with a
+short recording available when the interaction itself changed.
 
 For a skill, the before and after includes both the instruction change and its
 effect on a representative request in a fresh session.

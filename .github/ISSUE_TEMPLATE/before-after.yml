@@ -7,49 +7,32 @@ body:
     attributes:
       value: |
         Thanks for helping glowup learn from real use. Before sharing, redact credentials, tokens, personal data, account IDs, private endpoints, and local paths.
-  - type: dropdown
-    id: target-type
-    attributes:
-      label: What did you glow up?
-      options:
-        - CLI
-        - Developer tool
-        - Agent skill
-        - Another terminal experience
-    validations:
-      required: true
-  - type: textarea
-    id: goal
-    attributes:
-      label: What were you trying to improve?
-      description: Describe the task and the part of the experience you wanted to change.
-    validations:
-      required: true
   - type: textarea
     id: pair
     attributes:
-      label: Before and after
-      description: Show the same task and data before and after. Use screenshots, terminal captures, or prompt-and-output excerpts.
+      label: Visual before and after
+      description: Drag or paste the exported glowup-before-after PNG here so it displays inline. If the full export is a PDF, add its PNG preview here and attach or link the PDF.
+      placeholder: Drag or paste the Before/After image here.
     validations:
       required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: In one to three sentences, name the tool or task and what you wanted to improve.
+    validations:
+      required: true
+  - type: textarea
+    id: changes
+    attributes:
+      label: What changed?
+      description: Add up to three short bullets about what improved and anything that still needs work.
+    validations:
+      required: false
   - type: input
     id: target
     attributes:
-      label: Tool or skill
-      description: Add its name and a link if it is public.
+      label: Link (optional)
+      description: Link to the tool, skill, pull request, or full PDF if it is public.
     validations:
       required: false
-  - type: input
-    id: perspective
-    attributes:
-      label: Your perspective
-      description: Design engineer, designer, engineer, or something else—only if it adds useful context.
-    validations:
-      required: false
-  - type: textarea
-    id: what-you-noticed
-    attributes:
-      label: What did you notice?
-      description: What improved, regressed, surprised you, or still feels unclear?
-    validations:
-      required: true

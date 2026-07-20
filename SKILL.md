@@ -137,33 +137,73 @@ current stage visible and state what is needed to continue.
 10. **Compare & Finish — deliver and offer next actions.** Replace the proposed preview
    with a verified **Final After** from the implemented tool. Show the same task, data,
    and terminal dimensions as the Before; list the design decisions and contract checks.
-   At the end, ask **What should I do next? Select all that apply.** Use a multi-select
-   question when the host supports it, with these applicable actions:
-   - **Export Before/After** — Markdown with linked text or image captures, or a short
-     terminal recording when interaction matters.
-   - **Share on GitHub** — prepare a public Before/After issue for the glowup repository.
+   At the end, ask **What would you like me to do before we finish? Select any that
+   apply, or say done.** Use a multi-select question when the host supports it, with
+   only these additive actions:
+   - **Export visual** — create and immediately open a polished Before/After image or PDF.
+   - **Share on GitHub** — open a concise Before/After issue draft with the image ready.
    - **Commit changes** — stage and commit only the approved product changes.
-   - **Continue Glowup** — begin another Display or Flow pass.
-   - **Finish here** — leave the verified changes as they are; select this alone.
+   - **Another glowup pass** — begin another Display or Flow pass.
 
-   Do not represent the additive actions as mutually exclusive radio options or make
-   **No export** an action. If multi-select is unavailable, ask the user to list every
-   desired action in one response. If Export and Commit are both selected, keep the
-   export outside the target repository unless the user explicitly approves adding it.
-   When **Export Before/After** is selected, create the export and open its primary
-   artifact in the appropriate local viewer by default; the selection authorizes both
-   local actions. If the bundle has several files, open one comparison index that links
-   the captures rather than opening every asset. If local opening is unavailable, provide
-   one clear clickable path and the exact command for opening it. Opening locally never
-   authorizes uploading, publishing, or sharing the artifact.
+   Do not add **Finish here**, **No export**, or other negative actions to the multi-select.
+   Saying "done" or selecting nothing ends the run. If the user combines a finish phrase
+   with one or more actions, complete those actions and then stop; do not ask them to
+   resolve a conflict. If multi-select is unavailable, ask the user to list every desired
+   action in one response. Treat the selections as a short action queue and reuse the
+   verified captures and checks already produced. Do not re-audit the repository, inspect
+   unrelated history or stashes, or start extra reviewers merely to finish, export, share,
+   or commit. If Export and Commit are both selected, keep the export outside the target
+   repository unless the user explicitly approves adding it.
+   When **Export visual** is selected, create a polished visual artifact from the real
+   Before and Final After captures, then open it in the appropriate local viewer as soon
+   as the file is written, before giving a recap or doing another selected action. The
+   selection authorizes both local actions; do not ask for another confirmation. Choose
+   the format without adding another question:
+   - Use `glowup-before-after.png` for a single-screen comparison or compact storyboard.
+   - Use `glowup-before-after.pdf` when the captures are long, several states must remain
+     legible, or explanatory notes materially improve the comparison.
+   - For **Display**, label both captures and place them side by side only when each stays
+     legible; otherwise stack them at the same scale or use separate PDF pages.
+   - For **Flow**, compose a short storyboard of the key states. Offer a recording in
+     addition to the visual artifact only when timing, motion, or key sequences matter.
+   - Use the same command, data, terminal dimensions, font scale, and theme where
+     possible. Crop irrelevant shell chrome, not evidence. Never reconstruct output from
+     memory or present invented terminal text as a capture.
+   - Use available deterministic capture or rendering tools. A temporary HTML or SVG
+     renderer may produce the PNG or PDF, but it is not the exported artifact and should
+     be removed afterward. Do not install a renderer without approval. If neither format
+     can be produced, offer SVG or the separate source captures before falling back to
+     Markdown.
+
+   If local opening is unavailable, provide one clear clickable path and the exact
+   command for opening it. Opening locally never authorizes uploading, publishing, or
+   sharing the artifact. Markdown may accompany the visual for copyable details and
+   accessibility, but it is not the default export or the file opened first.
 
    When **Share on GitHub** is selected, prepare the comparison even if Export was not
-   also selected. Redact it, then show the exact issue title, body, links, and images that
-   would become public. Obtain confirmation on that final draft before creating the issue
-   in the glowup repository. After creation, open the published issue for the user. If
-   authenticated issue creation is unavailable, open the repository's Before/After issue
-   form and provide the prepared content to paste. Never treat Export alone as permission
-   to share publicly.
+   also selected. Reuse the existing evidence, redact it, and create a share-ready PNG.
+   Open that PNG immediately so the user can inspect it. Keep the issue draft short:
+   - a specific title naming the tool or task;
+   - the inline Before/After image;
+   - one to three sentences of context;
+   - up to three bullets covering what changed and what still needs work; and
+   - an optional public link to the tool or skill.
+
+   Do not add a biography, role or perspective field, process diary, full audit, raw
+   transcript, or duplicate the text visible in the image. Include a concise text summary
+   for accessibility and search. The public issue must display the comparison image
+   inline; do not create a text-only issue when a visual exists. If the primary export is
+   a PDF, embed a representative PNG preview and attach or link the full PDF where
+   supported.
+
+   Open the repository's Before/After issue form as soon as the draft and PNG are ready,
+   with the title and body populated when the available tooling supports it. Opening a
+   draft is not publishing. Show the exact title, body, links, and image that would become
+   public and obtain confirmation before submitting or creating the issue. If authenticated
+   creation can upload the image, create the approved issue and immediately open the
+   published page. If it cannot upload local images, do not create an incomplete issue:
+   open the form, reveal or open the PNG beside it for drag-and-drop, and provide the
+   prepared title and body. Never treat Export alone as permission to share publicly.
 
    HTML may wrap exported captures but is not the default preview or source of truth.
    When the tool can run locally, capture both states directly. Otherwise use a

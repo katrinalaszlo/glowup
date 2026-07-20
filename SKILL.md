@@ -58,7 +58,7 @@ current stage visible and state what is needed to continue.
      it without explicit approval.
    - Obtain explicit approval before any authenticated, networked, destructive,
      production-affecting, privacy-sensitive, or potentially costly execution.
-3. **Choose what to glow up.** For a CLI or developer tool, make the first choice
+3. **Choose — choose what to glow up.** For a CLI or developer tool, make the first choice
    concrete: **Display**, **Flow**, or **Both**.
    - **Display:** improve visual hierarchy, spacing, alignment, scanability, and emphasis.
    - **Flow:** improve commands, prompts, options, feedback, recovery, and next steps.
@@ -75,7 +75,7 @@ current stage visible and state what is needed to continue.
    a hypothesis for the selected pass.
    For a skill target, recommend the highest-leverage focus and ask one similarly
    consequential question only when it cannot be inferred.
-4. **Preview before editing.** Put the review in the conversation by default. Show the
+4. **Preview — preview before editing.** Put the review in the conversation by default. Show the
    captured **Before** beside or immediately before a clearly labeled **Proposed After**,
    using the same command, data, and terminal dimensions.
    - **Display:** use a fenced monospace mockup. When visual fidelity materially affects

@@ -77,6 +77,9 @@ adapted for terminals. Audit against these, fix what fails, report as a checklis
   a confirm or `--yes`, and ideally a dry-run or undo (reversibility beats warnings).
 - **Status is honest.** Long operations show progress; instant ones stay silent. No
   spinner theater on a 40ms task.
+- **Interruption is a designed state.** Ctrl-C, errors, resize, and exit leave the
+  user's data and terminal usable. Full-screen interfaces restore cursor visibility,
+  echo, and input mode on every exit path.
 - **Empty and success states explain the outcome.** Make nothing-to-fix feel intentional,
   not broken. State what was checked, what the result means, and whether there is a next
   action. Calibrate celebration to the stakes and the tool's voice.

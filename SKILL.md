@@ -1,6 +1,6 @@
 ---
 name: glowup
-description: Improve or QA a CLI, developer tool, or agent skill using product-design principles adapted to its real users and constraints. Inspect the current experience, recommend a focus, ask one consequential question, then improve human-facing hierarchy and flows or skill discovery, instructions, safety, and validation without breaking machine contracts. Use for "glowup my CLI", "improve this tool's UX", "glow up this skill", "QA this skill", "make this easier to use or scan", or a pre-launch design review.
+description: Improve a CLI, developer tool, or agent skill using product-design principles adapted to its real users and constraints. Inspect the current experience, recommend a focus, ask one consequential question, then improve human-facing hierarchy and flows or skill discovery, instructions, safety, and validation without breaking machine contracts. Use for "glowup my CLI", "improve this tool's UX", "glow up this skill", "audit this skill's interaction design", "make this easier to use or scan", or a pre-launch design review.
 ---
 
 # glowup — design the developer experience

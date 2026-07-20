@@ -31,7 +31,7 @@ Open Claude Code in the project that contains your tool or skill, then run:
 ```
 
 You can also ask Claude to “glowup my CLI,” “improve this tool's UX,” “glow up
-this skill,” or “QA this skill.”
+this skill,” or “audit this skill's interaction design.”
 
 glowup inspects the real experience before changing anything. It identifies the
 readers and contracts, recommends the most useful design focus, and asks one

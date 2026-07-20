@@ -1,20 +1,42 @@
-name: 📸 Show and tell — your before/after
-description: Ran glowup on your CLI? Post the pair.
+name: 📸 Share a before and after
+description: Show what glowup changed in a CLI, tool, or agent skill.
 title: "[before/after] "
 labels: ["show-and-tell"]
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping glowup learn from real use. Before sharing, redact credentials, tokens, personal data, account IDs, private endpoints, and local paths.
+  - type: dropdown
+    id: target-type
+    attributes:
+      label: What did you glow up?
+      options:
+        - CLI
+        - Developer tool
+        - Agent skill
+        - Another terminal experience
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: What were you trying to improve?
+      description: Describe the task and the part of the experience you wanted to change.
+    validations:
+      required: true
   - type: textarea
     id: pair
     attributes:
-      label: The pair
-      description: Drag in the before and after. First redact credentials, tokens, personal data, account IDs, private endpoints, and local paths.
+      label: Before and after
+      description: Show the same task and data before and after. Use screenshots, terminal captures, or prompt-and-output excerpts.
     validations:
       required: true
   - type: input
-    id: tool
+    id: target
     attributes:
-      label: The tool
-      description: Name, plus a link if it's public.
+      label: Tool or skill
+      description: Add its name and a link if it is public.
     validations:
       required: false
   - type: input
@@ -25,9 +47,9 @@ body:
     validations:
       required: false
   - type: textarea
-    id: what-changed
+    id: what-you-noticed
     attributes:
-      label: What changed
-      description: A line or two. What did you focus on, and what did glowup catch?
+      label: What did you notice?
+      description: What improved, regressed, surprised you, or still feels unclear?
     validations:
-      required: false
+      required: true

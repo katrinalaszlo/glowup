@@ -53,9 +53,10 @@ current stage visible and state what is needed to continue.
    - For a skill, read `SKILL.md` completely and load only the references and assets
      relevant to a concrete request. Capture how a fresh session discovers, interprets,
      executes, and validates the skill.
-   - If the target command or screen cannot be inferred, ask only for the missing command,
-     screenshot, or pasted output. Do not download or install a target merely to preview
-     it without explicit approval.
+   - If the target command or screen cannot be inferred, or more than one plausible target
+     exists in the working directory, ask a short question naming the detected candidates
+     (or say none were found) rather than improvising an open-ended one. Do not download or
+     install a target merely to preview it without explicit approval.
    - Obtain explicit approval before any authenticated, networked, destructive,
      production-affecting, privacy-sensitive, or potentially costly execution.
 3. **Choose — choose what to glow up.** For a CLI or developer tool, make the first choice

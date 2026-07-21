@@ -87,8 +87,8 @@ current stage visible and state what is needed to continue.
    - **Both:** combine the static comparison with the shortest useful flow transcript.
    Stack large captures instead of shrinking them; if a detail is cropped, keep the full
    capture available for context. Do not open two terminals or generate an HTML report by
-   default. In standard Claude Code, do not rely on an option `preview` field; it requires
-   a separately configured Agent SDK host.
+   default. In standard Claude Code, the AskUserQuestion option `preview` field is
+   available and renders as a monospace mockup, but only on single-select questions.
    Only after the user chooses the focus, show the complete Proposed After in normal
    conversation. Then ask the user to **Apply**, **Revise the preview**, or **Change
    focus** before editing; do not combine focus selection with implementation approval.

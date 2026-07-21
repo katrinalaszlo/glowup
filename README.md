@@ -16,11 +16,25 @@ on.
 
 ## Install
 
+Install glowup globally for a supported coding agent:
+
+```bash
+npx skills add katrinalaszlo/glowup -g
+```
+
+To target Claude Code directly:
+
+```bash
+npx skills add katrinalaszlo/glowup -g -a claude-code
+```
+
+Or install it manually:
+
 ```bash
 git clone https://github.com/katrinalaszlo/glowup ~/.claude/skills/glowup
 ```
 
-If this creates `~/.claude/skills` for the first time, restart Claude Code.
+Start a new agent session after installation so it discovers the skill.
 
 ## Usage
 

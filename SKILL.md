@@ -190,18 +190,30 @@ current stage visible and state what is needed to continue.
    Add a small "made with glowup" line and install command to the card frame glowup
    itself draws (title, border, footer) — never inside the captured tool's own output,
    which stays exactly what the target produced. If the primary export is a PDF, create a
-   representative PNG for sharing. Open the PNG immediately so the user can inspect it,
-   then open the glowup repository's **Show and tell** Discussion composer:
-   `https://github.com/katrinalaszlo/glowup/discussions/new?category=show-and-tell`.
+   representative PNG for sharing. Open the PNG immediately so the user can inspect it.
+
+   Host the PNG so the Discussion composer can open with the image already inline instead
+   of requiring a manual drag-and-drop: `gh gist create` cannot take a binary file directly
+   (it rejects PNGs), so create the secret gist with a placeholder text file, `git clone`
+   the returned gist URL, then `git add`/`commit`/`push` the PNG into it as a normal blob —
+   git has no binary restriction even though the `gist create` shortcut does. Get the raw
+   image URL with `gh api gists/<id>` (pattern:
+   `https://gist.githubusercontent.com/<user>/<gist-id>/raw/<blob-sha>/<filename>`). Then
+   open the composer with `title` and `body` pre-filled as URL-encoded query params, body
+   containing the markdown image link to that raw URL:
+   `https://github.com/katrinalaszlo/glowup/discussions/new?category=show-and-tell&title=<encoded>&body=<encoded-markdown-image>`.
+   If gist creation or push fails for any reason, fall back to opening the plain composer
+   URL and revealing the PNG beside it for manual drag-and-drop rather than blocking the
+   share.
 
    The Discussion needs only a concise title naming the tool or task and the inline
    Before/After image. Put only the image in the post body. Do not add context questions,
    change summaries, biographies, links, audit notes, or transcripts unless the user asks.
-   Reveal or open the PNG beside the composer so it can be dragged into the body when the
-   available tooling cannot upload it. Do not create an Issue or publish a text-only
-   fallback. Opening the composer is not publishing; obtain explicit approval before any
-   tool submits the Discussion, then immediately open the published page. Never treat
-   Export alone as permission to share publicly.
+   Do not create an Issue or publish a text-only fallback. Opening the composer — pre-filled
+   or not — is not publishing; obtain explicit approval before any tool submits the
+   Discussion, then immediately open the published page. Never treat Export alone as
+   permission to share publicly, and never leave the gist public — it must be secret
+   (unlisted), created solely to host this image.
 
    HTML may wrap exported captures but is not the default preview or source of truth.
    When the tool can run locally, capture both states directly. Otherwise use a

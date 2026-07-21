@@ -44,7 +44,7 @@ selecting a pattern.
   result. Offer an interactive action only when it is safe, relevant, and clearly
   optional. Piped and noninteractive output stays static.
 - **Use robust glyphs.** Prefer single-width `█`, `─`, and plain marks. Avoid `▓▒░`,
-  which can render as dither, and test any emoji or CJK content with `wcwidth`.
+  which can render as dither; test CJK content with `wcwidth` and emoji with `string-width`.
 - **Siblings share one system.** If the tool has multiple views (a main view and a
   picker, say), style them as one family.
 - **Alignment is the aesthetic.** Right-aligned numbers, consistent column edges,
@@ -127,4 +127,5 @@ ANSI codes never enter the width math at all — `visibleLength` is for the case
 you must mix styles within one line.
 
 - Box-drawing width: stick to single-width glyphs; emoji and CJK are double-width and
-  will shear columns (the `wcwidth` package measures them correctly if you must).
+  will shear columns. `wcwidth` measures CJK correctly but misjudges many modern emoji
+  (ZWJ sequences, skin-tone modifiers); use `string-width` for emoji-heavy content.

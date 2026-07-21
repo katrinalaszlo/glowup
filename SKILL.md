@@ -55,8 +55,9 @@ current stage visible and state what is needed to continue.
      executes, and validates the skill.
    - If the target command or screen cannot be inferred, or more than one plausible target
      exists in the working directory, ask a short question naming the detected candidates
-     (or say none were found) rather than improvising an open-ended one. Do not download or
-     install a target merely to preview it without explicit approval.
+     rather than improvising an open-ended one. If none exist, ask the user to point to a
+     CLI, developer tool, or skill directory instead of stopping on a bare "none found." Do
+     not download or install a target merely to preview it without explicit approval.
    - Obtain explicit approval before any authenticated, networked, destructive,
      production-affecting, privacy-sensitive, or potentially costly execution.
 3. **Choose — choose what to glow up.** For a CLI or developer tool, make the first choice
@@ -67,9 +68,9 @@ current stage visible and state what is needed to continue.
    If the request already names one of these focuses, skip the question. Otherwise, after
    inspection, ask **What should I glow up?** with exactly those three options. Recommend
    one from the captured evidence, but do not replace the options with findings, fixes,
-   issue scope, or visual directions. Reserve **Both** for the Display + Flow focus; use
-   **All findings** when referring to multiple issues. Before opening the choice, put the
-   captured evidence and recommendation in normal conversation. If using AskUserQuestion,
+   issue scope, or visual directions. Reserve **Both** for the Display + Flow focus.
+   Before opening the choice, put the captured evidence and recommendation in normal
+   conversation. If using AskUserQuestion,
    give each option only a label and short description; do not attach a preview panel.
    Describe confirmed observations, not suspected causes. Do not promote a finding into
    an option merely because a code search suggests it; reproduce it first or label it as
@@ -109,7 +110,10 @@ current stage visible and state what is needed to continue.
 7. **Implement & Verify — confirm orientation and capture baselines.** After the user approves the preview,
    restate the target, selected pass, change boundary, contracts that will remain
    unchanged, and the next stopping point. If the user redirects the preview, update it
-   before continuing. For a CLI, only now capture the relevant compatibility baselines:
+   before continuing. The Capture-stage risk gate stays in force for this phase: re-obtain
+   explicit approval before any authenticated, networked, destructive, production-affecting,
+   privacy-sensitive, or potentially costly command, including ones run only to capture a
+   baseline or verify a result. For a CLI, only now capture the relevant compatibility baselines:
    first run, help, one error, one empty or success state, piped output, structured output,
    and exit paths. Use existing tests, fixtures, temporary configuration, sandboxes, and
    dry-run modes; skip paths unrelated to the approved change.
@@ -183,9 +187,11 @@ current stage visible and state what is needed to continue.
 
    When **Share Before/After** is selected, prepare the comparison even if Export was not
    also selected. Reuse the existing evidence, redact it, and create a share-ready PNG.
-   If the primary export is a PDF, create a representative PNG for sharing. Open the PNG
-   immediately so the user can inspect it, then open the glowup repository's **Show and
-   tell** Discussion composer:
+   Add a small "made with glowup" line and install command to the card frame glowup
+   itself draws (title, border, footer) — never inside the captured tool's own output,
+   which stays exactly what the target produced. If the primary export is a PDF, create a
+   representative PNG for sharing. Open the PNG immediately so the user can inspect it,
+   then open the glowup repository's **Show and tell** Discussion composer:
    `https://github.com/katrinalaszlo/glowup/discussions/new?category=show-and-tell`.
 
    The Discussion needs only a concise title naming the tool or task and the inline

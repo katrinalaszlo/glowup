@@ -34,7 +34,8 @@ Or install it manually:
 git clone https://github.com/katrinalaszlo/glowup ~/.claude/skills/glowup
 ```
 
-Start a new agent session after installation so it discovers the skill.
+> **Before you run `/glowup`:** start a new agent session after installing. If `/glowup`
+> isn't recognized, that's why — restart the session and try again.
 
 ## Usage
 

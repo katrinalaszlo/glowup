@@ -64,7 +64,7 @@ narrating every command.
    Final After, confirmed changes and checks, and the next-action checklist.
 
 At the end, select any actions you want glowup to take before finishing:
-**Export visual**, **Share on GitHub**, **Commit changes**, or **Another glowup
+**Export visual**, **Share Before/After**, **Commit changes**, or **Another glowup
 pass**. The actions can be combined. If you do not need one, just say **done**.
 
 When you select Export, glowup creates and immediately opens a polished visual comparison.
@@ -74,14 +74,10 @@ is optional when timing or motion matters, and Markdown is supporting context
 rather than the primary artifact. If the environment cannot open files, glowup
 provides one direct path instead. Export never means upload or publish.
 
-When you select Share, glowup prepares a short, redacted issue centered on the
-Before/After image. It opens the image and issue form as soon as the draft is
-ready, then shows you exactly what would become public. The image must appear
-inline; a PDF export gets an inline PNG preview plus the full PDF attached or
-linked where supported. If automatic image upload is unavailable, glowup opens
-the form and the PNG together for drag-and-drop instead of publishing a
-text-only issue. Nothing is posted until you approve it, and a published issue
-opens automatically.
+When you select Share, glowup prepares and redacts a Before/After PNG, then opens
+the image and a GitHub **Show and tell** Discussion composer. The post body is
+just the image; GitHub also requires a short title. Nothing is published until
+you approve it.
 
 The default review stays in the conversation. High-fidelity snapshots,
 recordings, and HTML export pages are optional. When the target is not runnable
@@ -112,8 +108,7 @@ effect on a representative request in a fresh session.
 - **Skill experience:** discovery, progressive disclosure, useful questions,
   appropriate judgment, safety, validation, and context cost.
 
-See a [worked before-and-after](references/example.md) with the exact code change,
-or read the [terminal design principles and prior art](references/canon.md) behind
+Read the [terminal design principles and prior art](references/canon.md) behind
 the CLI path and the [skill-design rubric](references/skill-design.md) for
 human-agent collaboration.
 
@@ -132,10 +127,9 @@ Accessibility, trust, documentation, and evaluation remain part of every stage.
 
 glowup should improve the way good products do: by learning from real use.
 
-Share a [before and after](https://github.com/katrinalaszlo/glowup/issues/new?template=before-after.yml)
-and share what you noticed—what worked, what didn't, or what you would
-change. If you have a pattern, principle, or example that belongs in the skill,
-fork the repository and open a pull request.
+Share a [before and after](https://github.com/katrinalaszlo/glowup/discussions/new?category=show-and-tell).
+If you have a pattern, principle, or example that belongs in the skill, fork the
+repository and open a pull request.
 
 You don't need to be a designer. Experience from design, engineering, and
 everywhere in between will make glowup better. You can also

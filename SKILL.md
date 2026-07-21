@@ -141,7 +141,7 @@ current stage visible and state what is needed to continue.
    apply, or say done.** Use a multi-select question when the host supports it, with
    only these additive actions:
    - **Export visual** — create and immediately open a polished Before/After image or PDF.
-   - **Share on GitHub** — open a concise Before/After issue draft with the image ready.
+   - **Share Before/After** — open the image and a GitHub Show and tell composer.
    - **Commit changes** — stage and commit only the approved product changes.
    - **Another glowup pass** — begin another Display or Flow pass.
 
@@ -180,30 +180,21 @@ current stage visible and state what is needed to continue.
    sharing the artifact. Markdown may accompany the visual for copyable details and
    accessibility, but it is not the default export or the file opened first.
 
-   When **Share on GitHub** is selected, prepare the comparison even if Export was not
+   When **Share Before/After** is selected, prepare the comparison even if Export was not
    also selected. Reuse the existing evidence, redact it, and create a share-ready PNG.
-   Open that PNG immediately so the user can inspect it. Keep the issue draft short:
-   - a specific title naming the tool or task;
-   - the inline Before/After image;
-   - one to three sentences of context;
-   - up to three bullets covering what changed and what still needs work; and
-   - an optional public link to the tool or skill.
+   If the primary export is a PDF, create a representative PNG for sharing. Open the PNG
+   immediately so the user can inspect it, then open the glowup repository's **Show and
+   tell** Discussion composer:
+   `https://github.com/katrinalaszlo/glowup/discussions/new?category=show-and-tell`.
 
-   Do not add a biography, role or perspective field, process diary, full audit, raw
-   transcript, or duplicate the text visible in the image. Include a concise text summary
-   for accessibility and search. The public issue must display the comparison image
-   inline; do not create a text-only issue when a visual exists. If the primary export is
-   a PDF, embed a representative PNG preview and attach or link the full PDF where
-   supported.
-
-   Open the repository's Before/After issue form as soon as the draft and PNG are ready,
-   with the title and body populated when the available tooling supports it. Opening a
-   draft is not publishing. Show the exact title, body, links, and image that would become
-   public and obtain confirmation before submitting or creating the issue. If authenticated
-   creation can upload the image, create the approved issue and immediately open the
-   published page. If it cannot upload local images, do not create an incomplete issue:
-   open the form, reveal or open the PNG beside it for drag-and-drop, and provide the
-   prepared title and body. Never treat Export alone as permission to share publicly.
+   The Discussion needs only a concise title naming the tool or task and the inline
+   Before/After image. Put only the image in the post body. Do not add context questions,
+   change summaries, biographies, links, audit notes, or transcripts unless the user asks.
+   Reveal or open the PNG beside the composer so it can be dragged into the body when the
+   available tooling cannot upload it. Do not create an Issue or publish a text-only
+   fallback. Opening the composer is not publishing; obtain explicit approval before any
+   tool submits the Discussion, then immediately open the published page. Never treat
+   Export alone as permission to share publicly.
 
    HTML may wrap exported captures but is not the default preview or source of truth.
    When the tool can run locally, capture both states directly. Otherwise use a
@@ -231,8 +222,7 @@ Load the depth for the pass you are running, nothing else:
   implementation helpers to lift rather than re-derive. The design canon
   (`references/canon.md`) holds Nielsen/Gestalt translated to terminals plus best-in-class
   exemplars; read it before a look pass and hold the tool to its genre's best, not a
-  generic standard. A worked before/after with its exact code change is in
-  `references/example.md` — pattern-match against it instead of inventing.
+  generic standard.
 - **Skill pass:** read `references/skill-design.md` first — it contains the working
   checklist, heuristic translation, and self-QA protocol.
 

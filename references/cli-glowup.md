@@ -14,7 +14,9 @@ Read this before a look or feel pass on a CLI or developer tool. For skill targe
 
 - **RECEIPT** — itemized lines + dashed rules + a TOTAL. For anything measurable and
   cumulative (costs, tokens, sizes, time). Right-align every number. The total is the
-  hero.
+  hero. Even in an invented concept mockup, the total must equal the sum of the shown
+  line items — verify the arithmetic before presenting it; a receipt that doesn't add
+  up breaks the one thing this pattern promises.
 - **SCORECARD** — one big grade/score + a short list of contributing checks with
   pass/fail marks. For audits, linters, health checks.
 - **WRAPPED** — "your week/session/year in numbers": 3–5 oversized stats with one-line

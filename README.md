@@ -102,9 +102,16 @@ or install it without permission.
 ## What a run produces
 
 For a CLI, the result is the same machine contracts with a clearer and more
-useful human experience:
+useful human experience. Both sides below are real terminal captures, not
+mockups — before is `context-receipt`'s plain printf (2026-07-17); after is
+`debloat`, the same tool renamed and rebuilt (2026-07-24):
 
-![A CLI before glowup and after glowup, with the same data organized into a clearer visual hierarchy.](assets/before-after.svg)
+![The same receipt-pattern CLI, real terminal output: plain printf before, and color, bars, and a box-drawn summary after.](assets/before-after.svg)
+
+The same tool's interactive mode, real screenshot, no mockup — a priced choice
+that resolves into an earned result:
+
+![npx debloat: comparison bars, ranked cost table, priced choices, then the earned-celebration card](assets/debloat-pick.png)
 
 At the end, glowup can save and open a shareable Before/After PNG or PDF, with a
 short recording available when the interaction itself changed.

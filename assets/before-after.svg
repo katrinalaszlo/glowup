@@ -1,79 +1,94 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="516" height="860" viewBox="0 0 516 860" role="img" aria-labelledby="title desc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="14">
-  <title id="title">CLI output before and after glowup</title>
-  <desc id="desc">The same context receipt shown first with one reading level, then with the total, breakdown, and caveat arranged in a clearer hierarchy.</desc>
-  <rect width="516" height="860" fill="#0d1117"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="590" viewBox="0 0 1100 590" role="img" aria-labelledby="title desc" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace" font-size="12">
+  <title id="title">The same tool, real terminal output, before and after</title>
+  <desc id="desc">Left: context-receipt, plain printf, captured 2026-07-17. Right: debloat (the same tool, renamed and rebuilt), captured 2026-07-24. Both are genuine terminal captures, not mockups.</desc>
+  <rect width="1100" height="590" fill="#0d1117"/>
 
-  <!-- BEFORE: real data, one undifferentiated reading level -->
+  <!-- BEFORE panel: context-receipt, 2026-07-17, plain printf -->
   <g>
-    <rect x="8" y="8" width="500" height="414" rx="8" fill="#161b22" stroke="#30363d"/>
+    <rect x="8" y="8" width="500" height="398" rx="8" fill="#161b22" stroke="#30363d"/>
     <circle cx="30" cy="28" r="5.5" fill="#ff5f57"/>
     <circle cx="48" cy="28" r="5.5" fill="#febc2e"/>
     <circle cx="66" cy="28" r="5.5" fill="#28c840"/>
-    <text x="258" y="32" text-anchor="middle" fill="#9da7b3" font-size="13">before — one reading level</text>
-
-    <g fill="#e6edf3">
-      <text x="22" y="64">CONTEXT RECEIPT</text>
-      <text x="22" y="84">claude code · vault</text>
-      <text x="22" y="104">2026-07-17 18:23</text>
-      <line x1="22" y1="120" x2="486" y2="120" stroke="#e6edf3"/>
-      <text x="22" y="144">LOADED BEFORE YOUR PROMPT</text>
-      <text x="486" y="144" text-anchor="end">tokens*</text>
-      <text x="22" y="166">claude code system prompt</text>
-      <text x="486" y="166" text-anchor="end">~6.8k</text>
-      <text x="22" y="188">CLAUDE.md (global)</text>
-      <text x="486" y="188" text-anchor="end">1.5k</text>
-      <text x="22" y="210">MEMORY.md (auto-memory index)</text>
-      <text x="486" y="210" text-anchor="end">3.7k</text>
-      <text x="22" y="232">skill listing, user (20 skills)</text>
-      <text x="486" y="232" text-anchor="end">1.8k</text>
-      <line x1="22" y1="249" x2="486" y2="249" stroke="#e6edf3"/>
-      <text x="22" y="274">TOTAL</text>
-      <text x="486" y="274" text-anchor="end">~24.8k</text>
-      <text x="22" y="310">DEAD WEIGHT — on disk, NOT loaded</text>
-      <text x="36" y="332">AGENTS.md</text>
-      <text x="486" y="332" text-anchor="end">17.8k chars</text>
-      <text x="36" y="354" font-size="13">not read unless @imported from CLAUDE.md</text>
-      <text x="22" y="376" font-size="13">* chars÷4 estimate · reconcile with /context</text>
+    <text x="258" y="32" text-anchor="middle" fill="#6e7681" font-size="11">before — context-receipt, 2026-07-17</text>
+    <g fill="#c9d1d9">
+      <text x="22" y="62">CONTEXT RECEIPT</text>
+      <text x="22" y="81">claude code · vault</text>
+      <text x="22" y="100">2026-07-17 18:23</text>
+      <line x1="22" y1="115" x2="486" y2="115" stroke="#c9d1d9" stroke-width="1"/>
+      <text x="22" y="138">LOADED BEFORE YOUR PROMPT</text>
+      <text x="486" y="138" text-anchor="end">tokens*</text>
+      <text x="22" y="157">claude code system prompt</text>
+      <text x="486" y="157" text-anchor="end">~6.8k</text>
+      <text x="22" y="176">CLAUDE.md (global)</text>
+      <text x="486" y="176" text-anchor="end">1.5k</text>
+      <text x="22" y="195">MEMORY.md (auto-memory index)</text>
+      <text x="486" y="195" text-anchor="end">3.7k</text>
+      <text x="22" y="214">skill listing, user (20 skills)</text>
+      <text x="486" y="214" text-anchor="end">1.8k</text>
+      <line x1="22" y1="229" x2="486" y2="229" stroke="#c9d1d9" stroke-width="1"/>
+      <text x="22" y="252">TOTAL</text>
+      <text x="486" y="252" text-anchor="end">~24.8k</text>
+      <text x="22" y="290">DEAD WEIGHT — on disk, NOT loaded</text>
+      <text x="36" y="309">AGENTS.md</text>
+      <text x="486" y="309" text-anchor="end">17.8k chars</text>
+      <text x="50" y="328" font-size="11">not read by Claude Code unless @imported from CLAUDE.md</text>
+      <text x="22" y="347">* chars÷4 estimate · reconcile with /context</text>
+      <text x="22" y="366">npx context-receipt</text>
     </g>
-
-    <text x="258" y="408" text-anchor="middle" fill="#9da7b3" font-size="13">everything competes for attention</text>
   </g>
 
-  <!-- AFTER: same data, stacked for legibility on narrow README viewports -->
-  <g transform="translate(-516 430)">
-    <rect x="524" y="8" width="500" height="414" rx="8" fill="#161b22" stroke="#30363d"/>
+  <!-- AFTER panel: debloat, 2026-07-24, real npx debloat output -->
+  <g>
+    <rect x="524" y="8" width="560" height="560" rx="8" fill="#161b22" stroke="#30363d"/>
     <circle cx="546" cy="28" r="5.5" fill="#ff5f57"/>
     <circle cx="564" cy="28" r="5.5" fill="#febc2e"/>
     <circle cx="582" cy="28" r="5.5" fill="#28c840"/>
-    <text x="774" y="32" text-anchor="middle" fill="#9da7b3" font-size="13">after — hierarchy follows the task</text>
+    <text x="804" y="32" text-anchor="middle" fill="#6e7681" font-size="11">after — debloat, 2026-07-24, real output</text>
 
-    <text x="538" y="64" fill="#56d4dd" font-weight="700">CONTEXT RECEIPT</text>
-    <text x="1002" y="64" text-anchor="end" fill="#9da7b3">claude code · vault</text>
-    <text x="538" y="86" fill="#9da7b3">2026-07-17 18:23</text>
+    <text x="540.0" y="60" fill="#f85149" font-weight="700" textLength="319.2" lengthAdjust="spacingAndGlyphs">⚡ 19.9k tokens loaded every session before</text>
+    <text x="540.0" y="79" fill="#f85149" font-weight="700" textLength="114.0" lengthAdjust="spacingAndGlyphs">your first word</text>
+    <text x="540.0" y="98" fill="#6e7681" textLength="304.0" lengthAdjust="spacingAndGlyphs">claude code · debloat · 2026-07-24 14:22</text>
 
-    <text x="538" y="128" fill="#f0f6fc" font-size="27" font-weight="700">~24.8k</text>
-    <text x="538" y="150" fill="#9da7b3">tokens total · ~11.0k not itemized below</text>
-    <line x1="538" y1="169" x2="1002" y2="169" stroke="#57606a"/>
+    <text x="540.0" y="128.4" fill="#c9d1d9" textLength="121.6" lengthAdjust="spacingAndGlyphs">claude code base</text>
+    <text x="676.8" y="128.4" fill="#6e7681" textLength="106.4" lengthAdjust="spacingAndGlyphs">██████████████</text>
+    <text x="1068.0" y="128.4" text-anchor="end" fill="#c9d1d9" textLength="45.6" lengthAdjust="spacingAndGlyphs">~10.9k</text>
+    <text x="540.0" y="147.4" fill="#c9d1d9" textLength="91.2" lengthAdjust="spacingAndGlyphs">instructions</text>
+    <text x="676.8" y="147.4" fill="#c9d1d9" textLength="30.4" lengthAdjust="spacingAndGlyphs">████</text>
+    <text x="1068.0" y="147.4" text-anchor="end" fill="#c9d1d9" textLength="30.4" lengthAdjust="spacingAndGlyphs">3.3k</text>
+    <text x="540.0" y="166.4" fill="#c9d1d9" textLength="45.6" lengthAdjust="spacingAndGlyphs">memory</text>
+    <text x="1068.0" y="166.4" text-anchor="end" fill="#c9d1d9" textLength="7.6" lengthAdjust="spacingAndGlyphs">0</text>
+    <text x="540.0" y="185.4" fill="#c9d1d9" textLength="114.0" lengthAdjust="spacingAndGlyphs">skills + agents</text>
+    <text x="676.8" y="185.4" fill="#f85149" textLength="53.2" lengthAdjust="spacingAndGlyphs">███████</text>
+    <text x="1068.0" y="185.4" text-anchor="end" fill="#c9d1d9" textLength="30.4" lengthAdjust="spacingAndGlyphs">5.7k</text>
 
-    <text x="538" y="194" fill="#9da7b3" font-size="13" font-weight="700">BREAKDOWN</text>
-    <g fill="#e6edf3">
-      <text x="538" y="218">claude code system prompt</text>
-      <text x="1002" y="218" text-anchor="end">~6.8k</text>
-      <text x="538" y="241">CLAUDE.md (global)</text>
-      <text x="1002" y="241" text-anchor="end">1.5k</text>
-      <text x="538" y="264">MEMORY.md (auto-memory index)</text>
-      <text x="1002" y="264" text-anchor="end">3.7k</text>
-      <text x="538" y="287">skill listing, user (20 skills)</text>
-      <text x="1002" y="287" text-anchor="end">1.8k</text>
-    </g>
+    <text x="540.0" y="215.8" fill="#d29922" textLength="250.8" lengthAdjust="spacingAndGlyphs">DEAD WEIGHT — on disk, NOT loaded</text>
+    <text x="555.2" y="234.8" fill="#c9d1d9" textLength="159.6" lengthAdjust="spacingAndGlyphs">../../../../AGENTS.md</text>
+    <text x="1068.0" y="234.8" text-anchor="end" fill="#c9d1d9" textLength="76.0" lengthAdjust="spacingAndGlyphs">5.3k chars</text>
+    <text x="570.4" y="253.8" fill="#6e7681" font-size="11" textLength="296.4" lengthAdjust="spacingAndGlyphs">ignored unless @imported from CLAUDE.md</text>
 
-    <line x1="538" y1="306" x2="1002" y2="306" stroke="#57606a"/>
-    <text x="538" y="331" fill="#e3b341" font-weight="700">ON DISK, NOT LOADED</text>
-    <text x="1002" y="331" text-anchor="end" fill="#e6edf3">17.8k chars</text>
-    <text x="538" y="354" fill="#e6edf3">AGENTS.md</text>
-    <text x="538" y="376" fill="#9da7b3" font-size="13">not read unless @imported from CLAUDE.md</text>
-    <text x="1002" y="376" text-anchor="end" fill="#9da7b3" font-size="13">* chars÷4 estimate</text>
+    <text x="540.0" y="284.2" fill="#c9d1d9" textLength="266.0" lengthAdjust="spacingAndGlyphs">MCP, loads on use: supabase, gbrain</text>
 
-    <text x="774" y="408" text-anchor="middle" fill="#9da7b3" font-size="13">total first, breakdown second, caveat visible</text>
+    <text x="540.0" y="318.4" fill="#6e7681" textLength="311.6" lengthAdjust="spacingAndGlyphs">┌───────────────────────────────────────┐</text>
+    <text x="540.0" y="337.4" fill="#6e7681">│</text>
+    <text x="844.0" y="337.4" fill="#6e7681">│</text>
+    <text x="540.0" y="356.4" fill="#6e7681">│</text>
+    <text x="586.4" y="356.4" fill="#e6edf3" font-weight="700" textLength="98.8" lengthAdjust="spacingAndGlyphs">~19.9k tokens</text>
+    <text x="702.2" y="356.4" fill="#6e7681" font-size="11" textLength="167.2" lengthAdjust="spacingAndGlyphs">· 10% of a 200k window</text>
+    <text x="844.0" y="356.4" fill="#6e7681">│</text>
+    <text x="540.0" y="375.4" fill="#6e7681">│</text>
+    <text x="844.0" y="375.4" fill="#6e7681">│</text>
+    <text x="540.0" y="394.4" fill="#6e7681">│</text>
+    <text x="585.6" y="394.4" fill="#f85149" font-weight="700" textLength="220.4" lengthAdjust="spacingAndGlyphs">~5.3k of it is skill listings</text>
+    <text x="844.0" y="394.4" fill="#6e7681">│</text>
+    <text x="540.0" y="413.4" fill="#6e7681">│</text>
+    <text x="585.6" y="413.4" fill="#c9d1d9" textLength="136.8" lengthAdjust="spacingAndGlyphs">trim the unused: </text>
+    <text x="722.4" y="413.4" fill="#39c5cf" textLength="83.6" lengthAdjust="spacingAndGlyphs">npx debloat</text>
+    <text x="844.0" y="413.4" fill="#6e7681">│</text>
+    <text x="540.0" y="432.4" fill="#6e7681">│</text>
+    <text x="844.0" y="432.4" fill="#6e7681">│</text>
+    <text x="540.0" y="451.4" fill="#6e7681" textLength="311.6" lengthAdjust="spacingAndGlyphs">└───────────────────────────────────────┘</text>
+
+    <text x="540.0" y="481.8" fill="#6e7681" font-size="11" textLength="342.0" lengthAdjust="spacingAndGlyphs">note: no auto-mem…found for this project path</text>
+    <text x="540.0" y="500.8" fill="#6e7681" font-size="11" textLength="334.4" lengthAdjust="spacingAndGlyphs">* chars÷4 estimate · reconcile with /context</text>
   </g>
 </svg>

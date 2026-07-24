@@ -81,11 +81,13 @@ body {
 }
 .tag { font-size: 16px; color: #8b95a1; }
 .repo { margin-left: auto; font-size: 14px; color: #6e7681; }
-.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: stretch; }
+.col { display: flex; flex-direction: column; }
 .lbl { font-size: 12px; letter-spacing: 1.6px; margin-bottom: 12px; text-align: center; }
 .lbl.a { color: #8b95a1; }
 .lbl.b { color: #39c5cf; font-weight: 700; }
-.term { background: #161b22; border: 1px solid #30363d; border-radius: 9px; overflow: hidden; }
+.term { background: #161b22; border: 1px solid #30363d; border-radius: 9px; overflow: hidden;
+        flex: 1; display: flex; flex-direction: column; }
 .bar { padding: 11px 14px; border-bottom: 1px solid #21262d; display: flex; align-items: center; gap: 7px; }
 .dot { width: 11px; height: 11px; border-radius: 50%; }
 .cap { margin-left: auto; margin-right: auto; font-size: 11px; color: #6e7681; }
@@ -128,11 +130,11 @@ doc = f"""<!doctype html>
   <span class="repo">github.com/katrinalaszlo/glowup</span>
 </div>
 <div class="cols">
-  <div>
+  <div class="col">
     <div class="lbl a">BEFORE</div>
     {panel("context-receipt · 2026-07-17", html.escape(BEFORE))}
   </div>
-  <div>
+  <div class="col">
     <div class="lbl b">AFTER</div>
     {panel("npx debloat · real output", ansi_to_html(after_ansi))}
   </div>

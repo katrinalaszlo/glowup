@@ -5,18 +5,36 @@ Read this before a look or feel pass on a CLI or developer tool. For skill targe
 
 ## Contents
 
+- [What a terminal cannot do](#what-a-terminal-cannot-do)
 - [Layout patterns](#layout-patterns)
 - [Design lenses](#design-lenses)
+- [Hero output — designing for the screenshot](#hero-output--designing-for-the-screenshot)
 - [The feel pass — UX glowup](#the-feel-pass--ux-glowup)
 - [Implementation: lift these, don't re-derive them](#implementation-lift-these-dont-re-derive-them)
+
+## What a terminal cannot do
+
+Read `terminal-constraints.md` before drawing any mockup. It holds the substitution
+table (each unavailable GUI affordance and its terminal-native replacement), the ANSI
+attribute inventory, glyph safety tiers, named light-theme failure cases, and the three
+degradation environments.
+
+The consequence that gates this workflow: **every element in a Proposed After must name
+its concrete implementation** — the exact ANSI attribute, the exact glyph, the exact
+alignment mechanism. "A subtle divider" is not a design decision; "a dim `─` rule
+spanning the content width" is. An element that cannot name its implementation is not
+renderable, and showing it commits the user to a promise the tool cannot keep.
 
 ## Layout patterns
 
 - **RECEIPT** — itemized lines + dashed rules + a TOTAL. For anything measurable and
   cumulative (costs, tokens, sizes, time). Right-align every number. The total is the
-  hero. Even in an invented concept mockup, the total must equal the sum of the shown
-  line items — verify the arithmetic before presenting it; a receipt that doesn't add
-  up breaks the one thing this pattern promises.
+  hero — by weight and position, not by size: when several line items invite comparison,
+  bars carry the magnitude and the total leads in bold. Reserve enlarged block-glyph
+  digits for BADGE, where one number is the entire screen. Even in an invented concept
+  mockup, the total must equal the sum of the shown line items — verify the arithmetic
+  before presenting it; a receipt that doesn't add up breaks the one thing this pattern
+  promises.
 - **SCORECARD** — one big grade/score + a short list of contributing checks with
   pass/fail marks. For audits, linters, health checks.
 - **WRAPPED** — "your week/session/year in numbers": 3–5 oversized stats with one-line
@@ -34,8 +52,9 @@ selecting a pattern.
 ## Design lenses
 
 - **Prioritize the task.** Make the information needed for the next decision easiest to
-  find. When the user chose shareability, keep the key view near 24 rows × 60 columns;
-  otherwise let the task determine the size.
+  find. When the user chose shareability, target ~24 rows × 60 columns and treat 30 rows
+  as the hard cap — past that a screenshot needs scrolling. Otherwise let the task
+  determine the size.
 - **Give numbers context.** When a value has a meaningful whole, show its denominator or
   comparison. Use single-width solid bars such as `██──────── 20%` only when they improve
   comprehension. Do not manufacture a denominator or turn every metric into a hero.
@@ -52,17 +71,67 @@ selecting a pattern.
 - **Alignment is the aesthetic.** Right-aligned numbers, consistent column edges,
   box-drawing characters (`─ │ ┌ ┐ └ ┘`) over ASCII dashes. One outer frame maximum;
   nested boxes read as clip-art.
-- **Color: one accent + neutrals.** ANSI 16/256 only. Must survive BOTH dark and light
-  terminals — test the accent on white. Never encode meaning in color alone (add a
+- **Color: one accent + neutrals + semantic states.** ANSI 16/256 only. The accent
+  carries brand and interactive affordances. Semantic states are a separate category
+  that predates GUI brand palettes — test runners and linters have used green, yellow,
+  and red as *meaning* for decades, and readers do not parse them as extra accents. The
+  constraint is that a state color never appears decoratively: if a color is not
+  reporting a state, it is not that color. Reserve red for failure, so a normal run
+  never looks like an error. Must survive BOTH dark and light terminals — bright cyan on
+  Solarized Light and default light macOS Terminal is a known failure case, so verify on
+  a light theme, not just on white. Design so the hierarchy still holds with color
+  stripped entirely: position, bars, alignment, whitespace, and caps carry it, and color
+  only enhances. Run the target with `NO_COLOR=1` and read it — if the structure
+  collapses, the design was leaning on color. Never encode meaning in color alone (add a
   mark: ✓ ✗ ▲). Bold is a color. Dim is a color.
 - **Match the voice.** Use emoji, warmth, and celebration only when they fit the tool and
   the moment. Incident response, destructive operations, and routine output usually
   benefit from restraint.
 - **Keep attribution optional.** Add an install command or source line only when the
   user chose a shareable artifact and the target product wants attribution. Never add
-  promotional copy to another tool by default.
+  promotional copy to another tool by default. One carve-out: when the user selects
+  Share, glowup may sign the card frame it draws itself (title, border, footer). The
+  captured output inside that frame stays exactly what the target produced.
 - **Whitespace is a feature.** One blank line above and below the frame; breathing room
   often beats density, but do not make routine output longer without a reason.
+
+## Hero output — designing for the screenshot
+
+For build-in-public tools, the primary marketing asset is a screenshot of the output,
+posted by a user. That makes shareability a design requirement on exactly one screen —
+not a license to decorate the whole tool.
+
+Identify the **hero output**: the single screen someone would screenshot to show another
+person. Usually the results summary, the before/after, or the final receipt. Design that
+screen to a higher standard than the rest, against these criteria:
+
+- **Self-explanatory to a stranger.** It must work with no README and no memory of the
+  command that produced it. The framing line names the problem, the frequency, and the
+  stakes. `~19.9k tokens total` is a measurement; `19.9k tokens loaded every session
+  before your first word` is an argument. Text is the native material here — a full
+  sentence costs nothing in layout, so when terseness and context conflict on the hero
+  screen, context wins. Compromise available: terse panel label plus a full-sentence
+  footer.
+- **One number carries the story.** Viral screenshots have a headline stat — the delta,
+  the saving, the count. Make it the boldest thing on screen and let the rest support it.
+  Ten numbers of equal weight is a report; one number with receipts underneath is a post.
+- **Crops cleanly.** Target ~24 rows × 60 columns, 30 rows hard cap, so it captures
+  without scrolling; visually bounded top and bottom so a lazy crop still looks deliberate.
+  Screenshots overwhelmingly show dark themes, so compose dark-first — while still
+  passing the light-theme gate for actual use.
+- **One flourish is allowed here.** A single mark, a blunt label (`DEAD WEIGHT`), or an
+  earned result line is what makes someone want to share it. This is the one screen where
+  restraint relaxes by exactly one notch. The contrast with quiet routine output is what
+  makes it land. Mind the width: `⚡` is double-width, so it belongs on an unpadded
+  headline, never inside a frame or aligned column — `▸` and `✦` are narrow alternatives.
+- **Signature stays consented.** A tool naming itself in its own hero output turns every
+  share into distribution, and that is legitimate when the user owns the tool and asked
+  for a shareable artifact. It is not a default: see "Keep attribution optional" above.
+  Never add an install line or promotional copy to someone else's tool.
+
+The tension to manage: virality pulls loud, craft pulls quiet. Resolve it per element and
+deliberately. Never let the tidier option win by default on the hero screen, and never let
+the louder option leak into routine output.
 
 ## The feel pass — UX glowup
 
@@ -77,8 +146,15 @@ adapted for terminals. Audit against these, fix what fails, report as a checklis
   exit codes. Actionable error text helps both people and agents recover.
 - **Defaults carry the common case.** Zero flags for the 80% path. Destructive actions get
   a confirm or `--yes`, and ideally a dry-run or undo (reversibility beats warnings).
+  Graduate the confirmation to the stakes: `y/N` for routine destructive actions,
+  type-the-resource-name for irreversible ones. Every prompt has a flag twin —
+  interactive is the on-ramp, flags are the highway. If stdin is not a TTY, fail fast
+  and name the flag to use instead of hanging on a prompt nobody can answer.
 - **Status is honest.** Long operations show progress; instant ones stay silent. No
-  spinner theater on a 40ms task.
+  spinner theater on a 40ms task. Timing rules of thumb (Nielsen's response-time limits,
+  ported): under ~100 ms say nothing, under ~1 s no spinner needed, past ~1 s a spinner
+  naming the verb, past ~10 s real progress — count, bar, or ETA. When it finishes, say
+  what happened, not just that it finished.
 - **Interruption is a designed state.** Ctrl-C, errors, resize, and exit leave the
   user's data and terminal usable. Full-screen interfaces restore cursor visibility,
   echo, and input mode on every exit path.
@@ -90,7 +166,12 @@ adapted for terminals. Audit against these, fix what fails, report as a checklis
   correction, "burned" claims full price for cached tokens). Before any number ships in
   output or README, ask: is this the unit the system actually charges in?
 - **Names follow convention.** Consistent verbs (list/add/remove), conventional flags
-  (`--json`, `-q`, `--no-color`). Clever aliases are a tax on every new user.
+  (`--json`, `-q`, `--no-color`). Clever aliases are a tax on every new user. Pick one
+  command grammar — noun-verb (`gh pr create`) or verb-noun — and never mix them. Respect
+  the reserved short flags (`-h`, `-v`, `-q`, `-o`) and pair short with long, since long
+  forms self-document in scripts. Past the first positional argument, prefer named flags:
+  `deploy prod app-3 true --skip 2` is unreadable where
+  `deploy app-3 --env prod --force --retries 2` reorders freely and says what it means.
 - **The bar:** a stranger reaches their first success in under a minute without anyone
   explaining anything. Time it for real; don't assume.
 

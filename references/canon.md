@@ -84,6 +84,26 @@ pseudo-terminals. Explicit modes such as `--json`, `--no-input`, `--quiet`, and
 Do not imply that these sources all share one lineage or endorse every recommendation
 in this file. They are complementary references.
 
+## Implementations worth reading
+
+Principles are easier to apply after seeing them shipped. These are useful to study for
+specific qualities, not to copy wholesale:
+
+- **`gh` (GitHub CLI)** — restraint, and the Primer guidance applied at scale. Color
+  enhances meaning and never carries it alone.
+- **Charm tools (Bubble Tea, Lip Gloss, Gum, Glow)** — expressive interfaces built on
+  separating structure from style, the way the web separates markup from CSS.
+- **`ccusage`** — shareability treated as an explicit feature: it ships a `--compact`
+  mode documented as being for screenshots and sharing. The clearest existing precedent
+  for designing a hero output on purpose.
+- **`neofetch` / `onefetch`** — the ancestors of the genre, where the output itself was
+  the thing people wanted to post.
+- **Test runners and package managers (`vitest`, `pnpm`)** — status output, progress,
+  and failure reporting under real density.
+
+Verify current behavior before citing any of these; CLI output changes between releases,
+and a claim about what a tool prints should be checked against the version at hand.
+
 ## Port the reason, not the rule
 
 Transfer the constraint a principle protects, not its surface implementation. If the

@@ -102,16 +102,15 @@ or install it without permission.
 ## What a run produces
 
 For a CLI, the result is the same machine contracts with a clearer and more
-useful human experience. Both sides below are real terminal captures, not
-mockups — before is `context-receipt`'s plain printf (2026-07-17); after is
-`debloat`, the same tool renamed and rebuilt (2026-07-24):
+useful human experience. Both panels below are real terminal captures rendered
+character-for-character, not mockups — before is `context-receipt`'s plain
+printf (2026-07-17); after is `debloat`, the same tool rebuilt:
 
-![The same receipt-pattern CLI, real terminal output: plain printf before, and color, bars, and a box-drawn summary after.](assets/before-after.svg)
+![The same receipt-pattern CLI, real terminal output: undifferentiated printf before; after, a headline sentence, a breakdown sorted by size with bars carrying magnitude, and an itemized subtotal that reconciles with the total.](assets/before-after.png)
 
-The same tool's interactive mode, real screenshot, no mockup — a priced choice
-that resolves into an earned result:
-
-![npx debloat: comparison bars, ranked cost table, priced choices, then the earned-celebration card](assets/debloat-pick.png)
+Nothing in the after panel uses a capability the terminal lacks. Magnitude comes
+from bar length rather than type size, hierarchy from position, weight, and
+whitespace, and the whole receipt still reads with color stripped entirely.
 
 At the end, glowup can save and open a shareable Before/After PNG or PDF, with a
 short recording available when the interaction itself changed.
@@ -130,9 +129,10 @@ effect on a representative request in a fresh session.
 - **Skill experience:** discovery, progressive disclosure, useful questions,
   appropriate judgment, safety, validation, and context cost.
 
-Read the [terminal design principles and prior art](references/canon.md) behind
-the CLI path and the [skill-design rubric](references/skill-design.md) for
-human-agent collaboration.
+Read [what a terminal can and cannot do](references/terminal-constraints.md) — the
+substitution table, ANSI inventory, glyph safety tiers, and the degradation gates — plus
+the [terminal design principles and prior art](references/canon.md) behind the CLI path
+and the [skill-design rubric](references/skill-design.md) for human-agent collaboration.
 
 ## Roadmap
 

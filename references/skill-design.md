@@ -15,7 +15,8 @@
 ## Use this reference selectively
 
 Read this reference when the target is an agent skill or a human-agent workflow. For a
-CLI-only presentation pass, use `canon.md` instead.
+CLI-only presentation pass, use `cli-glowup.md` first, with `terminal-constraints.md` for
+the medium's limits and `canon.md` for principles and prior art.
 
 ## Port the reason, not the rule
 

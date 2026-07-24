@@ -84,6 +84,23 @@ current stage visible and state what is needed to continue.
      the decision and the tool can run safely, render the proposal in an isolated
      temporary copy and capture a fixed-size image. Label mockups as concepts and
      temporary renders as previews; neither is the implemented result.
+   - **Renderability gate — every mockup, without exception.** Before showing a Display
+     proposal, check it against `references/terminal-constraints.md` and confirm each
+     element maps to a real mechanism: ANSI attribute, glyph, or column arithmetic. Font
+     size, custom fonts, logos, panel fills, and pixel placement do not exist — a mockup
+     using them can never be implemented, and presenting it commits the user to a promise
+     the tool will not keep. State the mechanism for anything non-obvious (for example,
+     "magnitude via bar length" or "hero number via 5-row block glyphs") so the user is
+     approving something buildable.
+   - **Receipt check.** Shown line items must sum to the stated total, percentages to
+     ~100, and before − savings = after exactly. If a figure cannot be reconciled, label
+     the gap in the mockup itself. A tool whose job is measurement loses trust fastest on
+     arithmetic.
+   - **Shareability pass — hero output only.** When the target is shared publicly and
+     this screen is the one a user would screenshot, apply "Hero output" in
+     `references/cli-glowup.md`: framing line legible to a stranger, one headline number,
+     crops clean under ~30 rows. Attribution stays opt-in, never added to someone else's
+     tool by default.
    - **Flow:** show the current and proposed interaction as short transcripts. Use a
      recording only when timing, motion, or key sequences affect the decision.
    - **Both:** combine the static comparison with the shortest useful flow transcript.
@@ -159,63 +176,12 @@ current stage visible and state what is needed to continue.
    unrelated history or stashes, or start extra reviewers merely to finish, export, share,
    or commit. If Export and Commit are both selected, keep the export outside the target
    repository unless the user explicitly approves adding it.
-   When **Export visual** is selected, create a polished visual artifact from the real
-   Before and Final After captures, then open it in the appropriate local viewer as soon
-   as the file is written, before giving a recap or doing another selected action. The
-   selection authorizes both local actions; do not ask for another confirmation. Choose
-   the format without adding another question:
-   - Use `glowup-before-after.png` for a single-screen comparison or compact storyboard.
-   - Use `glowup-before-after.pdf` when the captures are long, several states must remain
-     legible, or explanatory notes materially improve the comparison.
-   - For **Display**, label both captures and place them side by side only when each stays
-     legible; otherwise stack them at the same scale or use separate PDF pages.
-   - For **Flow**, compose a short storyboard of the key states. Offer a recording in
-     addition to the visual artifact only when timing, motion, or key sequences matter.
-   - Use the same command, data, terminal dimensions, font scale, and theme where
-     possible. Crop irrelevant shell chrome, not evidence. Never reconstruct output from
-     memory or present invented terminal text as a capture.
-   - Use available deterministic capture or rendering tools. A temporary HTML or SVG
-     renderer may produce the PNG or PDF, but it is not the exported artifact and should
-     be removed afterward. Do not install a renderer without approval. If neither format
-     can be produced, offer SVG or the separate source captures before falling back to
-     Markdown.
-
-   If local opening is unavailable, provide one clear clickable path and the exact
-   command for opening it. Opening locally never authorizes uploading, publishing, or
-   sharing the artifact. Markdown may accompany the visual for copyable details and
-   accessibility, but it is not the default export or the file opened first.
-
-   When **Share Before/After** is selected, prepare the comparison even if Export was not
-   also selected. Reuse the existing evidence, redact it, and create a share-ready PNG.
-   Add a small "made with glowup" line and install command to the card frame glowup
-   itself draws (title, border, footer) — never inside the captured tool's own output,
-   which stays exactly what the target produced. If the primary export is a PDF, create a
-   representative PNG for sharing. Open the PNG immediately so the user can inspect it.
-
-   Host the PNG so the Discussion composer can open with the image already inline instead
-   of requiring a manual drag-and-drop: `gh gist create` cannot take a binary file directly
-   (it rejects PNGs), so create the secret gist with a placeholder text file, `git clone`
-   the returned gist URL, then `git add`/`commit`/`push` the PNG into it as a normal blob —
-   git has no binary restriction even though the `gist create` shortcut does. Get the raw
-   image URL with `gh api gists/<id>` (pattern:
-   `https://gist.githubusercontent.com/<user>/<gist-id>/raw/<blob-sha>/<filename>`). Then
-   open the composer with `title` and `body` pre-filled as URL-encoded query params, body
-   containing the markdown image link to that raw URL:
-   `https://github.com/katrinalaszlo/glowup/discussions/new?category=show-and-tell&title=<encoded>&body=<encoded-markdown-image>`.
-   If gist creation or push fails for any reason, fall back to opening the plain composer
-   URL and revealing the PNG beside it for manual drag-and-drop rather than blocking the
-   share.
-
-   The Discussion needs only a concise title naming the tool or task and the inline
-   Before/After image. Put only the image in the post body. Do not add context questions,
-   change summaries, biographies, links, audit notes, or transcripts unless the user asks.
-   Do not create an Issue or publish a text-only fallback. Opening the composer — pre-filled
-   or not — is not publishing; obtain explicit approval before any tool submits the
-   Discussion, then immediately open the published page. Never treat Export alone as
-   permission to share publicly, and never leave the gist public — it must be secret
-   (unlisted), created solely to host this image.
-
-   HTML may wrap exported captures but is not the default preview or source of truth.
+   When **Export visual** or **Share Before/After** is selected, read
+   `references/export-share.md` and follow it. Do not load it otherwise. Both actions work
+   only from the real Before and Final After captures; never reconstruct output from memory
+   or present invented terminal text as a capture. The selection authorizes creating the
+   artifact and opening it locally, so do not ask again — but opening locally is never
+   permission to upload or publish, and Export alone is never permission to share.
    When the tool can run locally, capture both states directly. Otherwise use a
    user-supplied screenshot or transcript for the Before and say what could not be
    reproduced. Do not add export files to the target repository without approval. Before

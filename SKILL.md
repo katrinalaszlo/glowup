@@ -90,10 +90,14 @@ current stage visible and state what is needed to continue.
      the user decides with the colors on screen, not from memory of a monochrome
      sketch. Fall back to one copy-paste command that runs the render in the user's
      own terminal only when local opening is unavailable. The user should never have
-     to ask why the mockup has no color. When variants are offered, render each
-     one the same way so the user picks between real screens, not sketches. Label
-     mockups as concepts and temporary renders as previews; neither is the implemented
-     result.
+     to ask why the mockup has no color. When variants are offered, render each one
+     the same way and compose the real renders into one labeled comparison image —
+     Before first, then each variant labeled A, B, C — with a visible caption telling
+     the user to reply with their pick in the conversation, since an image cannot be
+     clicked. Open it as the variant question arrives; the conversation question
+     remains the selection mechanism, and the Final After at Compare & Finish reuses
+     the same rendering path. Label mockups as concepts and temporary renders as
+     previews; neither is the implemented result.
    - **Renderability gate — every mockup, without exception.** Before showing a Display
      proposal, check it against `references/terminal-constraints.md` and confirm each
      element maps to a real mechanism: ANSI attribute, glyph, or column arithmetic. Font

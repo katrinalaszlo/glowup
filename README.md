@@ -113,7 +113,14 @@ printf (2026-07-17); after is `debloat`, the same tool rebuilt:
 
 Nothing in the after panel uses a capability the terminal lacks. Magnitude comes
 from bar length rather than type size, hierarchy from position, weight, and
-whitespace, and the whole receipt still reads with color stripped entirely.
+whitespace, and the whole receipt still reads with color stripped entirely. The
+cards are composed by `assets/build-card.py` from the raw captures, so spacing is
+exact by construction.
+
+The empty state got the same treatment — a designed destination instead of a
+blank exit:
+
+![debloat's empty state: a green all-clean headline, then a bordered card reading "you keep a tidy context — every skill here earns its place" with the tokens-loaded count, and the command to run again.](assets/debloat-clean.png)
 
 At the end, glowup can save and open a shareable Before/After PNG or PDF, with a
 short recording available when the interaction itself changed.

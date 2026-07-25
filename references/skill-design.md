@@ -122,6 +122,12 @@ skill is effective. Validate them on representative work.
 7. If the skill claims support across models or hosts, repeat on those supported variants.
 8. Record improvements, regressions, unresolved uncertainty, and user feedback.
 
+In Claude Code, a subagent spawned with only the user-visible request approximates a
+fresh session; a new CLI session works too. Either counts as fresh only if it starts
+without your findings, the suspected defect, or the intended answer in its prompt. If a
+claimed model or host variant cannot be run here, record step 7 as untested rather than
+assuming it passes.
+
 Self-review can reveal ambiguity and missing checks, but it cannot provide independence.
 Do not teach the evaluation session the intended answer or the suspected defect.
 

@@ -24,7 +24,10 @@ Composition:
 - Use the same command, data, terminal dimensions, font scale, and theme where possible.
   Crop irrelevant shell chrome, not evidence.
 
-Use available deterministic capture or rendering tools. A temporary HTML or SVG renderer
+Use available deterministic capture or rendering tools — the skill bundles one:
+`assets/build-card.py` composes the before/after card from raw captured terminal text
+(ANSI intact), so spacing is exact by construction. Prefer it before deriving a new
+renderer. A temporary HTML or SVG renderer
 may produce the PNG or PDF, but it is not the exported artifact and should be removed
 afterward. Do not install a renderer without approval. If neither format can be produced,
 offer SVG or the separate source captures before falling back to Markdown.
@@ -51,6 +54,12 @@ exactly what the target produced.
 
 ### Hosting the image so the composer opens with it inline
 
+Pushing the PNG to a gist is an upload: a secret gist's raw URL is world-readable to
+anyone who has it, so the image is on the public internet the moment it lands. Obtain
+explicit approval for the upload before creating the gist — the same approval the
+Capture-stage risk gate requires for any networked execution. Opening the PNG locally,
+or the user having selected Share, never grants it.
+
 `gh gist create` cannot take a binary file directly (it rejects PNGs). Work around it:
 
 1. Create the secret gist with a placeholder text file.
@@ -67,8 +76,12 @@ the body containing the markdown image link to that raw URL:
 https://github.com/katrinalaszlo/glowup/discussions/new?category=show-and-tell&title=<encoded>&body=<encoded-markdown-image>
 ```
 
-If gist creation or push fails for any reason, fall back to opening the plain composer URL
-and revealing the PNG beside it for manual drag-and-drop rather than blocking the share.
+If gist creation or push fails for any reason, or the user declines the upload, fall back
+to opening the plain composer URL and revealing the PNG beside it for manual
+drag-and-drop rather than blocking the share.
+
+If the user cancels the share after the gist exists, delete it (`gh gist delete <id>`)
+before finishing — a cancelled share must not leave a live raw URL behind.
 
 The gist must never be left public — it is secret (unlisted), created solely to host this
 image.

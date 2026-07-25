@@ -21,7 +21,7 @@ At the start and whenever the stage changes, show a compact marker in normal con
 
 ```text
 Glowup 2/5 · Choose
-Now: Choose Display, Flow, or Both.
+Now: Choose what to glow up.
 Next: I’ll show the Proposed After before editing.
 ```
 
@@ -75,8 +75,10 @@ current stage visible and state what is needed to continue.
    Describe confirmed observations, not suspected causes. Do not promote a finding into
    an option merely because a code search suggests it; reproduce it first or label it as
    a hypothesis for the selected pass.
-   For a skill target, recommend the highest-leverage focus and ask one similarly
-   consequential question only when it cannot be inferred.
+   For a skill target, the focus options are **discovery**, **instructions**, **safety**,
+   or **validation** (the boundaries in `references/skill-design.md`). Recommend the
+   highest-leverage one and ask one similarly consequential question only when it cannot
+   be inferred.
 4. **Preview — preview before editing.** Put the review in the conversation by default. Show the
    captured **Before** beside or immediately before a clearly labeled **Proposed After**,
    using the same command, data, and terminal dimensions.
@@ -104,10 +106,15 @@ current stage visible and state what is needed to continue.
    - **Flow:** show the current and proposed interaction as short transcripts. Use a
      recording only when timing, motion, or key sequences affect the decision.
    - **Both:** combine the static comparison with the shortest useful flow transcript.
+   - **Skill target:** the preview is a before/after excerpt of the instructions being
+     changed plus the expected behavior change on a representative request — what a
+     fresh session would do differently. Mockups and terminal captures do not apply.
    Stack large captures instead of shrinking them; if a detail is cropped, keep the full
    capture available for context. Do not open two terminals or generate an HTML report by
-   default. In standard Claude Code, the AskUserQuestion option `preview` field is
-   available and renders as a monospace mockup, but only on single-select questions.
+   default. If the host renders the AskUserQuestion option `preview` field (single-select
+   questions only where supported), it may carry the mockup; otherwise put the mockup in
+   normal conversation before asking. Never rely on a preview panel the user might not
+   have seen — the conversation copy is the one being approved.
    Only after the user chooses the focus, show the complete Proposed After in normal
    conversation. Then ask the user to **Apply**, **Revise the preview**, or **Change
    focus** before editing; do not combine focus selection with implementation approval.
@@ -124,7 +131,10 @@ current stage visible and state what is needed to continue.
      line naming its tradeoff. When the fix is determinate — an alignment bug, a contract
      violation, one obvious hierarchy error — show a single proposal; manufacturing
      alternatives wastes the user's attention.
-5. **Choose the change boundary.**
+5. **Preview — choose the change boundary.** The boundary restates the chosen focus as
+   what may change: **Display** maps to a look pass, **Flow** to a feel pass, and a
+   skill target is always a skill pass. Name it before showing the Proposed After so the
+   preview only contains changes the boundary allows.
    - **Look pass:** change presentation only. Keep logic and all machine behavior intact.
    - **Feel pass:** improve interaction behavior such as first run, recovery, progress,
      or reversibility. Show the proposed flow and obtain explicit approval before editing.
@@ -134,7 +144,7 @@ current stage visible and state what is needed to continue.
      boundaries, user checkpoints, safety, or validation. Preserve the skill's stated
      purpose and any tool contracts; obtain approval before broadening its authority or
      product scope.
-6. **Port the reason, not the rule.** For each recommendation, name the reader, the
+6. **Preview — port the reason, not the rule.** For each recommendation, name the reader, the
    protected human or system constraint, what changes in this medium, and the observable
    test. Use a heuristic only when its underlying constraint transfers.
 7. **Implement & Verify — confirm orientation and capture baselines.** After the user approves the preview,
@@ -176,9 +186,10 @@ current stage visible and state what is needed to continue.
    apply, or say done.** Use a multi-select question when the host supports it, with
    only these additive actions:
    - **Export visual** — create and immediately open a polished Before/After image or PDF.
-   - **Share Before/After** — open the image and a GitHub Show and tell composer.
+   - **Share Before/After** — open the image and a Show and tell composer in the glowup
+     community repo.
    - **Commit changes** — stage and commit only the approved product changes.
-   - **Another glowup pass** — begin another Display or Flow pass.
+   - **Another glowup pass** — begin another Display, Flow, or skill pass.
 
    Do not add **Finish here**, **No export**, or other negative actions to the multi-select.
    Saying "done" or selecting nothing ends the run. If the user combines a finish phrase
@@ -209,11 +220,26 @@ current stage visible and state what is needed to continue.
       paths or disproved hypotheses.
    4. **Next actions** — offer the multi-select actions above.
 
+   End a completed skill run with the same shape: the before fixture, the after
+   instructions, the fresh-session behavior comparison from verification, and next
+   actions (Export visual does not apply unless a visual was produced).
+
    Do not finish with only raw After output and an implementation summary.
+
+## Review-only runs
+
+When the request is an audit or review rather than a change — "audit this skill's
+interaction design", a pre-launch design review — run Capture and the relevant
+checklist, then deliver ranked findings as the final artifact: for each, the file and
+line, what is wrong, why it matters to its reader, and a concrete proposed fix. Do not
+edit anything and skip Preview, Implement & Verify, and Compare & Finish. If the user
+then asks to apply fixes, the accepted findings become the Proposed After and the run
+rejoins the journey at Preview.
 
 ## Pass playbooks
 
-Load the depth for the pass you are running, nothing else:
+Load the depth for the pass you are running, nothing else — except references the
+target itself cites, which you may open to verify the citations hold:
 
 - **Look or feel pass (CLI or developer tool):** read `references/cli-glowup.md` first —
   layout patterns, design lenses, the terminal usability checklist, and ANSI
@@ -223,6 +249,10 @@ Load the depth for the pass you are running, nothing else:
   generic standard.
 - **Skill pass:** read `references/skill-design.md` first — it contains the working
   checklist, heuristic translation, and self-QA protocol.
+- **Any Display mockup:** read `references/terminal-constraints.md` before drawing it —
+  the renderability gate checks every element against its substitution table.
+- **Export visual or Share Before/After selected:** read `references/export-share.md`
+  and follow it. Do not load it otherwise.
 
 ## Never break the machine path
 

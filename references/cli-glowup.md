@@ -44,6 +44,12 @@ renderable, and showing it commits the user to a promise the tool cannot keep.
   comparative.
 - **STREAK/PROGRESS** — a bar or run of marks showing accumulation. For habit-shaped
   tools.
+- **GROUPED LIST** — items under headers, with a status mark in the first column and one
+  aligned column per fact. For inventories where entries share a repeated attribute
+  (config file, host, namespace, package). Promoting that attribute to a header removes
+  it from every row, which is usually the single largest saving available; a status mark
+  plus a status word keeps the scan possible without color. Put the count summary at the
+  top, not the bottom — the reader wants the verdict before the enumeration.
 
 Treat these as candidates, not required templates. A clearer table, short list, or plain
 sentence is often better than a branded layout. Match the information and task before

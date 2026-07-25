@@ -171,6 +171,12 @@ adapted for terminals. Audit against these, fix what fails, report as a checklis
   must match the mechanic (skill listings load per session; "per prompt" invites the
   correction, "burned" claims full price for cached tokens). Before any number ships in
   output or README, ask: is this the unit the system actually charges in?
+- **Help never lies.** A feel pass that changes behavior updates every surface that
+  describes it in the same change: `--help` text, README examples, shell completions,
+  man pages. Stale help is worse than no help — it teaches the old interface with the
+  new one's confidence, and it burns both readers: the person follows an example that
+  no longer works, and the agent asserts flags that no longer exist. Verify by rerunning
+  `--help` and every changed example after the edit, not by remembering to.
 - **Names follow convention.** Consistent verbs (list/add/remove), conventional flags
   (`--json`, `-q`, `--no-color`). Clever aliases are a tax on every new user. Pick one
   command grammar — noun-verb (`gh pr create`) or verb-noun — and never mix them. Respect

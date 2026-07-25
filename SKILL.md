@@ -82,10 +82,18 @@ current stage visible and state what is needed to continue.
 4. **Preview — preview before editing.** Put the review in the conversation by default. Show the
    captured **Before** beside or immediately before a clearly labeled **Proposed After**,
    using the same command, data, and terminal dimensions.
-   - **Display:** use a fenced monospace mockup. When visual fidelity materially affects
-     the decision and the tool can run safely, render the proposal in an isolated
-     temporary copy and capture a fixed-size image. Label mockups as concepts and
-     temporary renders as previews; neither is the implemented result.
+   - **Display:** use a fenced monospace mockup for structure — and know its limit: a
+     fenced block strips ANSI, so the user is judging a colorless sketch of a colored
+     design. When the proposal uses color or weight as meaning — nearly every Display
+     pass — do not stop at the sketch. Render the proposal in an isolated temporary
+     copy and open the colored Before/After render as the approval question arrives —
+     the user decides with the colors on screen, not from memory of a monochrome
+     sketch. Fall back to one copy-paste command that runs the render in the user's
+     own terminal only when local opening is unavailable. The user should never have
+     to ask why the mockup has no color. When variants are offered, render each
+     one the same way so the user picks between real screens, not sketches. Label
+     mockups as concepts and temporary renders as previews; neither is the implemented
+     result.
    - **Renderability gate — every mockup, without exception.** Before showing a Display
      proposal, check it against `references/terminal-constraints.md` and confirm each
      element maps to a real mechanism: ANSI attribute, glyph, or column arithmetic. Font

@@ -69,10 +69,13 @@ narrating every command.
    findings support the recommendation instead of becoming another intake menu.
 3. **Review the Proposed After.** Display changes use a terminal mockup or an
    isolated rendered snapshot. Flow changes use a short interaction transcript.
-   Both use the same command and representative data as the Before.
+   Both use the same command and representative data as the Before. When more than
+   one direction is defensible, glowup shows two or three labeled variants that
+   differ in approach rather than one proposal to critique.
 4. **Approve before implementation.** Apply the direction, revise the preview,
-   or change focus. No product code changes before approval. Deeper compatibility
-   baselines run only after approval and stay scoped to the selected change.
+   or change focus. Revising is a loop — keep iterating until it's right; nothing
+   is implemented until you say so. Deeper compatibility baselines run only after
+   approval and stay scoped to the selected change.
 5. **Compare the verified result.** glowup runs the implemented tool, replaces
    the preview with a real Final After, verifies machine contracts, and offers an
    optional export. Its final response always includes the original Before, the

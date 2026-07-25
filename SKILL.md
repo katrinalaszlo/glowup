@@ -111,6 +111,19 @@ current stage visible and state what is needed to continue.
    Only after the user chooses the focus, show the complete Proposed After in normal
    conversation. Then ask the user to **Apply**, **Revise the preview**, or **Change
    focus** before editing; do not combine focus selection with implementation approval.
+   - **Revise loops.** Revise is repeatable, not a single retry. Keep showing updated
+     previews until the user applies or stops; never treat the second proposal as final
+     by default, and never start editing to escape an iteration.
+   - **Offer variants when the direction is genuinely open.** If a Display change has more
+     than one defensible approach, show **two or three labeled variants side by side**
+     instead of one proposal and a critique loop — reacting to options is faster and more
+     accurate than describing a change in the abstract. Variants must differ in
+     *approach*, not polish: for a receipt, "bars carry magnitude" versus "block-glyph
+     hero number" versus "plain ranked table" are variants; three spacing tweaks are not.
+     Each one passes the renderability and receipt gates independently, and each gets one
+     line naming its tradeoff. When the fix is determinate — an alignment bug, a contract
+     violation, one obvious hierarchy error — show a single proposal; manufacturing
+     alternatives wastes the user's attention.
 5. **Choose the change boundary.**
    - **Look pass:** change presentation only. Keep logic and all machine behavior intact.
    - **Feel pass:** improve interaction behavior such as first run, recovery, progress,

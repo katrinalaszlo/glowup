@@ -96,3 +96,25 @@ text-only fallback.
 Opening the composer — pre-filled or not — is not publishing. Obtain explicit approval
 before any tool submits the Discussion, then immediately open the published page. Never
 treat Export alone as permission to share publicly.
+
+## The loop artifact
+
+Every developer tool has one output that non-users end up seeing — a PR
+comment, a shared report link, a badge, a screenshot in Slack. That output is
+the tool's **loop artifact**: the only marketing most tools will ever get.
+During a glowup, identify it and treat it as the hero surface:
+
+- **Find it:** which single output would a happy user's *teammate* see first?
+  If the answer is "none," that absence is a finding — propose one.
+- **Place it where the audience already looks.** A report in a repo directory
+  reaches whoever seeks it; the same report as a PR comment reaches the whole
+  team without asking. Existing surfaces (PRs, READMEs, CI summaries, shared
+  links) beat new destinations.
+- **Design it for strangers.** The loop artifact is read by people with zero
+  context: legible framing line, one headline number, clean crop under ~30
+  rows or ~800px, self-explanatory without the tool installed.
+- **Attribution stays opt-in** — a quiet "made with X" earns the loop; a loud
+  watermark kills the share.
+
+Posting to any surface the user doesn't own outright always requires their
+explicit go-ahead per artifact, same as the sharing rules above.

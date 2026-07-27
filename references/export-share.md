@@ -118,3 +118,7 @@ During a glowup, identify it and treat it as the hero surface:
 
 Posting to any surface the user doesn't own outright always requires their
 explicit go-ahead per artifact, same as the sharing rules above.
+
+For the full surface-by-surface rules (CI logs, PR comments and bodies, error
+messages, linkable reports, agent readers), see "Where output travels" in
+`cli-glowup.md`.

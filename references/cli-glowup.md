@@ -177,6 +177,10 @@ interactive summary looks like:
   actionable errors is what an agent can quote and act on; `--json` is what it can build
   on. Designing for the agent reader is distribution to every human that agent advises.
 
+When one of these surfaces is the single output a happy user's teammate would
+see first, that is the tool's loop artifact — `export-share.md` has the compact
+treatment of identifying and placing it during a share flow.
+
 The governing rule across all of these: **never tax the surface.** Attribution,
 install hints, and promotional lines belong only where "Keep attribution optional"
 already allows them — on artifacts the user chose to share. On push surfaces (CI, PR

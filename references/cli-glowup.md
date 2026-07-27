@@ -9,6 +9,7 @@ Read this before a look or feel pass on a CLI or developer tool. For skill targe
 - [Layout patterns](#layout-patterns)
 - [Design lenses](#design-lenses)
 - [Hero output — designing for the screenshot](#hero-output--designing-for-the-screenshot)
+- [Where output travels — distribution surfaces](#where-output-travels--distribution-surfaces)
 - [The feel pass — UX glowup](#the-feel-pass--ux-glowup)
 - [Implementation: lift these, don't re-derive them](#implementation-lift-these-dont-re-derive-them)
 
@@ -139,6 +140,49 @@ The tension to manage: virality pulls loud, craft pulls quiet. Resolve it per el
 deliberately. Never let the tidier option win by default on the hero screen, and never let
 the louder option leak into routine output.
 
+## Where output travels — distribution surfaces
+
+The screenshot is pull-based: a user chooses to share it, rarely. Most of a tool's output
+reaches strangers without anyone choosing — and those surfaces fire far more often. During
+Capture, inventory where this tool's output lands in front of people who never installed
+it, because the highest-frequency surface is the real hero output, whatever the
+interactive summary looks like:
+
+- **CI logs.** Every push, read by the whole team at the worst moment — the build failed
+  and they're hunting. Non-TTY rules apply in full (plain, no ANSI unless the CI supports
+  it, greppable line prefixes), and the reader's question is always "was it this tool, and
+  what do I do." A summary line that answers both in one glance is the best first
+  impression a teammate ever gets of the tool.
+- **PR surfaces.** A tool or skill that posts comments or opens PRs is publishing to every
+  reviewer on the thread — the highest-leverage distribution surface a dev tool can have,
+  and the easiest to get banned from. Two rules govern it. *Speak on signal:* comment or
+  annotate when there is a finding; stay silent on pass. A rare, correct comment gets
+  screenshotted; routine LGTMs train reviewers to ignore the bot, then to remove it.
+  *The PR body is a hero output:* title states the change in the repo's own convention,
+  body shows evidence (what was found, what changed, how it's verified — a test beats an
+  assertion), and it reads self-explanatory to a reviewer who has never heard of the tool.
+- **Errors.** The most-traveled output any tool produces — pasted into issues, chat, and
+  LLM conversations, always stripped of context. "Errors are directions" (feel pass) is
+  also distribution: an error that names the problem and the fix represents the tool well
+  in places its maintainer will never see; one that doesn't is a complaint about the tool
+  filed in someone else's tracker.
+- **Committed and linkable artifacts.** Reports, badges, and HTML pages a tool generates
+  are its most durable public surface — they persist in repos and travel as links. Hold
+  them to hero-output criteria (self-explanatory to a stranger, one number carries the
+  story) and to their own material's rules: an HTML report is not a terminal capture, so
+  hierarchy comes from real typography, and it must be self-contained — no external
+  scripts or fonts that rot or phone home.
+- **Agents.** Output is read by coding agents that summarize it to their humans and
+  recommend tools to them. Structured, plainly-worded output with stated units and
+  actionable errors is what an agent can quote and act on; `--json` is what it can build
+  on. Designing for the agent reader is distribution to every human that agent advises.
+
+The governing rule across all of these: **never tax the surface.** Attribution,
+install hints, and promotional lines belong only where "Keep attribution optional"
+already allows them — on artifacts the user chose to share. On push surfaces (CI, PR
+comments, errors) they convert goodwill into resentment at exactly the rate the surface
+fires. What earns distribution there is precision, not signage.
+
 ## The feel pass — UX glowup
 
 When asked to improve the CLI's UX (not just its looks), run classic usability heuristics
@@ -188,6 +232,18 @@ adapted for terminals. Audit against these, fix what fails, report as a checklis
   explaining anything. Time it for real; don't assume.
 
 The look pass makes the interface clear. The feel pass makes it worth returning to.
+
+Several of these checks are also growth mechanics wearing UX names, and it is honest to
+treat them that way: the under-a-minute bar is an activation metric, the empty and
+success states are onboarding destinations, and "end with a door" is the step ladder
+that turns a first run into a habit. Growth design is a legitimate part of UX — the
+craft of getting a user to the tool's first proof of value, borrowed from onboarding
+and first-run practice on the web. The gate that keeps it legitimate in a terminal:
+every mechanism must serve the user's success first, with distribution as the byproduct.
+A designed aha moment, a next-step door, a share-worthy hero screen — yes. Nags,
+phone-home telemetry, unsolicited signatures, or friction added to force a funnel —
+never. If a growth mechanism would survive being explained out loud to the user, it
+belongs; if it depends on them not noticing, it doesn't.
 
 ## Implementation: lift these, don't re-derive them
 

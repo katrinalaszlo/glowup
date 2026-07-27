@@ -114,7 +114,10 @@ current stage visible and state what is needed to continue.
      this screen is the one a user would screenshot, apply "Hero output" in
      `references/cli-glowup.md`: framing line legible to a stranger, one headline number,
      crops clean under ~30 rows. Attribution stays opt-in, never added to someone else's
-     tool by default.
+     tool by default. If Capture found the tool's output also lands on push surfaces —
+     CI logs, PR comments or bodies, generated reports — apply "Where output travels"
+     from the same reference: the highest-frequency surface outranks the interactive
+     screen, and push surfaces get precision, never signage.
    - **Flow:** show the current and proposed interaction as short transcripts. Use a
      recording only when timing, motion, or key sequences affect the decision.
    - **Both:** combine the static comparison with the shortest useful flow transcript.
